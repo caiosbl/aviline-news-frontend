@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "material-icons-react": "^1.0.4",
     "moment": "^2.23.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
 import Bar from './components/Navbar';
 import News from './components/News';
+import Ads1 from './components/Ads1';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -15,6 +16,7 @@ const routing = (
 
         <div>
             <Bar />
+            <Ads1/>
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />

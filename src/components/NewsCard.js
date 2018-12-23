@@ -33,9 +33,6 @@ class NewsCard extends Component {
         const categories = isLoading ? " " : news.categories;
         const authorName = isLoading ? " " : author.first + ' ' + author.last;
 
-        console.log(isLoading);
-        console.log(this.props.data);
-
 
         return (<Grid>
 
