@@ -15,7 +15,7 @@ const routing = (
     <Router>
 
         <div>
-            <Bar />
+            <Bar/> 
             <Ads1/>
             <Switch>
                 
