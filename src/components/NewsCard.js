@@ -20,7 +20,7 @@ class NewsCard extends Component {
     }
 
     renderCategory(categorieList) {
-        categorieList.map((categorie) => {
+        return categorieList.map((categorie) => {
             return <Badge key={categorie.key}>{categorie.name}</Badge>;
         })
     }
