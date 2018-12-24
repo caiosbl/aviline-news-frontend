@@ -36,7 +36,6 @@ class News extends Component {
 
         const news = this.state.news;
 
-        
 
         return (
             this.state.notFound ? <NotFound /> : <NewsCard data={news} />

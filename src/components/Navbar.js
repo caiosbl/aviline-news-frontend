@@ -7,6 +7,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink,
   NavItem,
   UncontrolledDropdown,
   DropdownToggle,
@@ -39,10 +40,8 @@ class Bar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="/" className="Navlink">Home</Link>
+                <Link to="/" className="Navlink"><NavLink>Home</NavLink></Link>
               </NavItem>
-
-
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Categorias
@@ -67,4 +66,5 @@ class Bar extends Component {
     );
   }
 }
+
 export default Bar;
