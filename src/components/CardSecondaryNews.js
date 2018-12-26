@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, Badge, CardText } from 'reactstrap';
+import { Card,CardHeader, Badge, CardText ,CardBody} from 'reactstrap';
 import Spinner from './Spinner';
 import renderHTML from 'react-render-html';
 import { Link } from 'react-router-dom';
-import '../styles/CardSpotlightNews.css';
 
 
 
-class CardSpotlightNews extends Component {
+
+class CardSecondaryNews extends Component {
 
 
     constructor(props) {
@@ -47,22 +47,19 @@ class CardSpotlightNews extends Component {
 
             (this.state.load || this.state.notFound) ? <Spinner /> :
                 <Link to={"/news/" + data.slug} id="link">
-                    <Card inverse id="Card">
-
-
-
-                        <CardImg width="100%" src={data.image.url}
-                            alt="Card image cap" style={{ opacity: 0.5 }} />
-                        <CardImgOverlay>
-                            {data.categories[0] !== undefined &&
-                                <CardText>
-                                    <Badge color="danger" id="badge"><h5>{data.categories[0].name}</h5></Badge>
-                                </CardText>}
-                            <CardText id='CardTitle'><h3>{data.title}</h3></CardText>
-                        </CardImgOverlay>
-                    </Card>
+                 
+                    
+                    {data.categories[0] !== undefined &&
+                    <h5>{data.categories[0].name}</h5>}
+ 
+                    <CardBody> 
+                        <CardText>
+                        <h6>{data.title}</h6>
+                        </CardText>
+                    </CardBody>
+             
                 </Link>);
     }
 }
 
-export default CardSpotlightNews;
+export default CardSecondaryNews;

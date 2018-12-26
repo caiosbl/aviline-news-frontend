@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody, CardTitle, CardText, Button, CardFooter, Ro
 import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
 import MaterialIcon from 'material-icons-react';
+import CardSecondaryNews from './CardSecondaryNews';
 import '../styles/Home.css';
 
 
@@ -19,37 +20,57 @@ class Home extends Component {
             <Grid>
 
                 <Row>
-                    <Col md={4} mdPull={6} >
+                    <Col md={4} mdPull={4} style={{marginBottom: 10}}>
                         <CardSpotlightNews position={1} />
 
                     </Col>
 
-                    <Col md={4} mdPull={6} >
+                    <Col md={4} mdPull={6} style={{marginBottom: 10}}>
                         <CardSpotlightNews position={2} />
+                    </Col>
+
+                    <Col md={4} mdPull={4} style={{marginBottom: 10}}>
+                        <CardSpotlightNews position={3} />
+                    </Col>
+
+
+                </Row>
+
+
+                <Row>
+
+                <Col md={2} mdPull={2} style={{marginBottom: 10}}>
+                        <CardSecondaryNews position={1} />
 
                     </Col>
 
-                    <Col md={4} mdPull={4} >
+                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
+                        <CardSecondaryNews position={2} />
+                    </Col>
+
+                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
+                        <CardSecondaryNews position={2} />
+                    </Col>
+                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
+                        <CardSecondaryNews position={2} />
+                    </Col>
+                    
+                </Row>
+
+                <Row style={{marginTop: 10}}>
+
+                    <Col md={8} mdPull={4}>
                         <Card>
                             <CardHeader tag="h6" id="LatestNewsTitle">
                                 <span style={{ marginTop: 20 }}>
                                     <MaterialIcon icon="history" color="white" />
-                                </span> <span style={{ fontSize: 26, paddingBottom: 60 }}>Últimas Notícias</span>
+                                </span> <span style={{ fontSize: 26, paddingBottom: 60 }}>Mais Notícias</span>
                             </CardHeader>
                             <CardBody>
                                 <LatestNews />
                             </CardBody>
                         </Card>
                     </Col>
-
-
-
-
-                </Row>
-
-                <Row>
-
-
 
                 </Row>
 
