@@ -19,22 +19,17 @@ class Home extends Component {
             <Grid>
 
                 <Row>
-                    <Col md={3} mdPull={6} >
-                        <CardSpotlightNews />
-                        <CardSpotlightNews />
+                    <Col md={4} mdPull={6} >
+                        <CardSpotlightNews position={1} />
+
                     </Col>
 
-                    <Col md={3} mdPull={6} >
-                        <CardSpotlightNews />
-                        <CardSpotlightNews />
+                    <Col md={4} mdPull={6} >
+                        <CardSpotlightNews position={2} />
+
                     </Col>
 
-                    <Col md={3} mdPull={6} >
-                        <CardSpotlightNews />
-                        <CardSpotlightNews />
-                    </Col>
-
-                    <Col md={3} mdPull={2} >
+                    <Col md={4} mdPull={4} >
                         <Card>
                             <CardHeader tag="h6" id="LatestNewsTitle">
                                 <span style={{ marginTop: 20 }}>

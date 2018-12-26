@@ -1,0 +1,20 @@
+#Card{
+    color: white;
+    text-shadow:5px 5px 18px black;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#Card:hover {
+    box-shadow: 5px 5px 30px grey;
+}
+
+#Card:hover #CardTitle {
+        color: black;
+        text-shadow:5px 5px 18px grey;
+}
+
+#link:hover {
+    text-decoration: none;
+}
+
+
+
