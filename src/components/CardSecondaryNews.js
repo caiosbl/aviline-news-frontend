@@ -46,19 +46,28 @@ class CardSecondaryNews extends Component {
         return (
 
             (this.state.load || this.state.notFound) ? <Spinner /> :
-                <Link to={"/news/" + data.slug} id="link">
-                 
+              
+            <div>
                     
                     {data.categories[0] !== undefined &&
-                    <h5>{data.categories[0].name}</h5>}
- 
-                    <CardBody> 
+                    <div style={{
+                        width:100, 
+                        color: 'red',
+                        borderBottom: '3px solid red',
+                        marginBottom: '10px'
+                
+                
+                }
+                    
+                    }><h5>{data.categories[0].name}</h5></div>}
+
+                    <Link to={"/news/" + data.slug} id="link">
+                 
                         <CardText>
                         <h6>{data.title}</h6>
                         </CardText>
-                    </CardBody>
-             
-                </Link>);
+                   
+                </Link></div>);
     }
 }
 

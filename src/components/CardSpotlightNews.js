@@ -51,7 +51,7 @@ class CardSpotlightNews extends Component {
 
 
 
-                        <CardImg width="100%" src={data.image.url}
+                        <CardImg width="100%" height="220" src={data.image.url}
                             alt="Card image cap" style={{ opacity: 0.5 }} />
                         <CardImgOverlay>
                             {data.categories[0] !== undefined &&

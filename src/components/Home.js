@@ -49,10 +49,10 @@ class Home extends Component {
                     </Col>
 
                     <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                        <CardSecondaryNews position={2} />
+                        <CardSecondaryNews position={3} />
                     </Col>
                     <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                        <CardSecondaryNews position={2} />
+                        <CardSecondaryNews position={4} />
                     </Col>
                     
                 </Row>
