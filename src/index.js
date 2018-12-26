@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Bar from './components/Navbar';
 import News from './components/News';
 import Ads1 from './components/Ads1';
+import Footer from './components/Footer';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -23,6 +24,8 @@ const routing = (
                 <Route path="*" component={Home} />
               
             </Switch>
+
+            <Footer/>
         </div>
     </Router>
 );
