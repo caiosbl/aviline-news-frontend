@@ -5,6 +5,7 @@ import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
 import MaterialIcon from 'material-icons-react';
 import CardSecondaryNews from './CardSecondaryNews';
+import CardQuotation from './CardQuotation';
 import '../styles/Home.css';
 
 
@@ -14,6 +15,8 @@ class Home extends Component {
     constructor(props) {
         super(props);
     }
+
+    
 
     render() {
         return (
@@ -41,20 +44,25 @@ class Home extends Component {
 
                 <Col md={2} mdPull={2} style={{marginBottom: 10}}>
                         <CardSecondaryNews position={1} />
-
-                    </Col>
-
-                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
                         <CardSecondaryNews position={2} />
                     </Col>
-
+                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
+                        <CardSecondaryNews position={2} />
+                        <CardSecondaryNews position={1} />
+                    </Col>
                     <Col md={2} mdPull={2} style={{marginBottom: 10}}>
                         <CardSecondaryNews position={3} />
+                        <CardSecondaryNews position={1} />
                     </Col>
                     <Col md={2} mdPull={2} style={{marginBottom: 10}}>
                         <CardSecondaryNews position={4} />
+                        <CardSecondaryNews position={1} />
                     </Col>
-                    
+                    <Col md={4} mdPull={2} style={{marginBottom: 10}}>
+                        <CardQuotation/>
+                        
+                    </Col>
+    
                 </Row>
 
                 <Row style={{marginTop: 10}}>
