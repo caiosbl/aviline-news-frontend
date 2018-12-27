@@ -38,7 +38,7 @@ class LatestNews extends Component {
                 return (<tr>
 
                     <th scope="row">
-                        <span><MaterialIcon icon="hquery_builder" color="grey" size={10} /></span>
+                        <span style={{marginRight: 10}}><MaterialIcon icon="hquery_builder" color="grey" size={10}  /></span>
                         <span><Moment format="DD/MM" style={{ color: "grey", fontSize: 14 }}>{news.publishedDate.slice(0, 10)}</Moment>
                         </span>
                     </th>

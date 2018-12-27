@@ -67,7 +67,7 @@ class Home extends Component {
 
                 <Row style={{marginTop: 10}}>
 
-                    <Col md={8} mdPull={4}>
+                    <Col md={8} mdPull={4} style={{marginBottom: 40}}>
                         <Card>
                             <CardHeader tag="h6" id="LatestNewsTitle">
                                 <span style={{ marginTop: 20 }}>
