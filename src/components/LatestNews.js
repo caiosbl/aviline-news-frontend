@@ -12,22 +12,18 @@ class LatestNews extends Component {
         super(props);
 
         this.state = {
-            data: "",
+            data: props.data,
             isLoading: true
         };
 
     }
 
-    async getData(that) {
+     getData(that) {
+         const data = that.state.data;
 
-        fetch("https://aviline.herokuapp.com/api/post")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (res) {
-                that.setState({ data: res, isLoading: false });
-            });
-
+        if(data.length > 0)
+            that.setState({ isLoading: false });
+    
     }
 
     renderLatestNews(newsList) {

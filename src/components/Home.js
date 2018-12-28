@@ -95,7 +95,7 @@ class Home extends Component {
 
                     <Col md={8} mdPull={4} style={{marginBottom: 40}}>
                     {this.state.load || this.state.notFound ? <Spinner /> : 
-                    <LatestNews />}
+                    <LatestNews data={this.state.data} />}
                     </Col>
 
                 </Row>
