@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardText, CardBody, Badge, CardHeader } from 'reactstrap';
-import { Row, Col } from 'react-bootstrap';
+import { Card,CardBody, Badge, CardHeader } from 'reactstrap';
+import { Row, Grid } from 'react-bootstrap';
 import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
 import MaterialIcon from 'material-icons-react';
@@ -71,25 +71,25 @@ class CardQuotation extends Component {
 
                 <Card>
                     <CardHeader style={{ backgroundColor: '#CC0000' }}>
-                   
                         <h4 style={{ fontFamily: 'Squada One, cursive', color: 'white' }}>
                         <span style={{marginRight: 4}}><MaterialIcon icon="trending_up" color="white" size={20} /></span> 
                         Cotações</h4></CardHeader>
                     
                     <CardBody>
 
-                        <div style={{ display: 'inline-flex' }}>
-                            <div style={{ height: 70, fontFamily: 'Roboto Condensed', marginRight: 10, marginLeft: 20 }}>
+                        <Grid>
+                            <Row>
+                            <div style={{ fontFamily: 'Roboto Condensed',  marginLeft: 20 }}>
                                 <h6 style={{ padding: 5 }}><MaterialIcon icon="attach_money" color="black" size={14} />Dolár  Compra</h6>
                                 <Badge color='success'> <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarCompra}</h4> </Badge>
                             </div>
 
 
-                            <div style={{ height: 70, fontFamily: 'Roboto Condensed', marginBottom: 20 }}>
+                            <div style={{ height: 70, fontFamily: 'Roboto Condensed', marginBottom: 20 ,marginLeft: 20}}>
                                 <h6 style={{ padding: 5 }}><MaterialIcon icon="attach_money" color="black" size={14} />Dolár Venda</h6>
                                 <Badge color='success'> <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarVenda}</h4> </Badge>
-                            </div>
-                        </div>
+                            </div></Row>
+                        </Grid>
                     </CardBody>
                 </Card>
         );

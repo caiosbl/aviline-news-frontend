@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Grid } from 'react-bootstrap';
-import { Card, CardHeader, CardBody, CardTitle, CardText, Button, CardFooter, Row, CardImg, CardImgOverlay } from 'reactstrap';
+import { Row, Col, Grid } from 'react-bootstrap';
+import { } from 'reactstrap';
 import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
 import MaterialIcon from 'material-icons-react';
@@ -14,8 +14,22 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            data: ''
+        };
     }
 
+    async getData(that) {
+
+        fetch("https://aviline.herokuapp.com/api/post")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (res) {
+                that.setState({ data: res, isLoading: false });
+            });
+
+    }
     
 
     render() {
