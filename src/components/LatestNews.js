@@ -45,12 +45,12 @@ class LatestNews extends Component {
                         if (cont < 10)
                             return (
                             <tr>
-                                <th scope="row" style={{width:200}}>
+                                <th scope="row" style={{width:100}}>
                                     <span style={{ marginRight: 10 }}><MaterialIcon icon="hquery_builder" color="grey" size={10} /></span>
                                     <span><Moment format="DD/MM" style={{ color: "grey", fontSize: 14 }}>{news.publishedDate.slice(0, 10)}</Moment>
                                     </span>
                                 </th>
-                                <td> <Link to={'news/' + news.slug}> {news.title}</Link></td>
+                                <td style={{width:600}}> <Link to={'news/' + news.slug}> {news.title}</Link></td>
                                 
                             </tr>);
                     })}
