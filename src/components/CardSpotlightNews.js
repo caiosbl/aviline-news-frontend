@@ -15,7 +15,6 @@ class CardSpotlightNews extends Component {
         this.state = {
             position: props.position,
             load: true,
-            notFound: false,
             data: props.data
 
         };
@@ -30,14 +29,13 @@ class CardSpotlightNews extends Component {
         const position = that.state.position;
 
         if (!(data.length < position))
-            that.setState({ data: data[that.state.position - 1], load: false });
+            that.setState({ data: data[position - 1], load: false });
 
     }
 
     render() {
             
         this.state.load && this.getData(this);
-
         const data = this.state.data;
 
         return (

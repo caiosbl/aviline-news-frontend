@@ -15,25 +15,18 @@ class CardSecondaryNews extends Component {
         this.state = {
             position: props.position,
             load: true,
-            notFound: false,
-            data: ''
+            data: props.data
 
         };
     }
 
 
-    async getData(that) {
-
-        fetch(`http://aviline.herokuapp.com/api/post`)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (res) {
-                res.length < that.state.position ? that.setState({ notFound: true, load: false }) :
-
-                    that.setState({ data: res[that.state.position - 1], load: false });
-            });
-
+    getData(that) {
+        const data = that.state.data;
+        const position = that.state.position;
+    
+             if(!(data.length < position))
+                    that.setState({ data: data[position - 1], load: false });
     }
 
     render() {
@@ -45,7 +38,7 @@ class CardSecondaryNews extends Component {
 
         return (
 
-            (this.state.load || this.state.notFound) ? <Spinner /> :
+            (this.state.load) ? <Spinner /> :
               
             <div>
                     
@@ -54,12 +47,9 @@ class CardSecondaryNews extends Component {
                         width:100, 
                         color: 'red',
                         borderBottom: '3px solid red',
-                        marginBottom: '10px'
-                
-                
-                }
-                    
-                    }><h5>{data.categories[0].name}</h5></div>}
+                        marginBottom: '10px'}}>
+                        
+                        <h5>{data.categories[0].name}</h5></div>}
 
                     <Link to={"/news/" + data.slug} id="link">
                  
