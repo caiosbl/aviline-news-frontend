@@ -18,6 +18,7 @@ class Home extends Component {
         this.state = {
             data: '',
             load: true,
+            notFound: false
         };
     }
 
@@ -45,17 +46,17 @@ class Home extends Component {
                 <Row>
                     <Col md={4} mdPull={4} style={{marginBottom: 10}}>
                     {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={1} />}
+                        <CardSpotlightNews position={1} data={this.state.data} />}
                     </Col>
 
                     <Col md={4} mdPull={6} style={{marginBottom: 10}}>
                     {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={2} />}
+                        <CardSpotlightNews position={2} data={this.state.data} />}
                     </Col>
 
                     <Col md={4} mdPull={4} style={{marginBottom: 10}}>
                     {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={3} />}
+                        <CardSpotlightNews position={3} data={this.state.data} />}
                     </Col>
 
 

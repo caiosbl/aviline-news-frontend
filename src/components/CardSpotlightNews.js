@@ -16,36 +16,33 @@ class CardSpotlightNews extends Component {
             position: props.position,
             load: true,
             notFound: false,
-            data: ''
+            data: props.data
 
         };
     }
 
 
-    async getData(that) {
+    getData(that) {
 
-        fetch(`http://aviline.herokuapp.com/api/post`)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (res) {
-                res.length < that.state.position ? that.setState({ notFound: true, load: false }) :
 
-                    that.setState({ data: res[that.state.position - 1], load: false });
-            });
+        const data = that.state.data;
+        
+        const position = that.state.position;
+
+        if (!(data.length < position))
+            that.setState({ data: data[that.state.position - 1], load: false });
 
     }
 
     render() {
-
-        this.state.load &&
-            this.getData(this);
+            
+        this.state.load && this.getData(this);
 
         const data = this.state.data;
 
         return (
 
-            (this.state.load || this.state.notFound) ? <Spinner /> :
+            (this.state.load) ? <Spinner /> :
                 <Link to={"/news/" + data.slug} id="link">
                     <Card inverse id="Card">
                         <CardImg width="100%" height="220" src={data.image.url}
@@ -55,8 +52,8 @@ class CardSpotlightNews extends Component {
                                 <CardText>
                                     <Badge color="danger" id="badge"><h6>{data.categories[0].name}</h6></Badge>
                                 </CardText>}
-                            <CardText id='CardTitle'> 
-                            <h4 style={{fontSize: '400'}}>{data.title}</h4>
+                            <CardText id='CardTitle'>
+                                <h4 style={{ fontSize: '400' }}>{data.title}</h4>
                             </CardText>
                         </CardImgOverlay>
                     </Card>
