@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import EventCard from './EventCard';
+import EventItem from './EventItem';
 import NotFound from './NotFound';
 import Spinner from './Spinner';
+import {Grid,Col} from 'react-bootstrap';
 
-class Event extends Component {
+class Events extends Component {
 
     constructor(props) {
         super(props);
@@ -22,8 +23,9 @@ class Event extends Component {
                 return response.json();
             })
             .then(function (res) {
+                const data = res.sort((a, b) => { return new Date(a.dateStart) - new Date(b.dateStart) });
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                that.setState({ events: res, load: false });
+                that.setState({ events: data, load: false });
             });
 
     }
@@ -37,22 +39,22 @@ class Event extends Component {
 
 
         return (
-            this.state.notFound ? <NotFound /> : 
-            this.state.load ? <Spinner/> :
             
+            <Grid>
+            
+            {this.state.notFound ? <NotFound /> : 
+            this.state.load ? <Spinner/> :
             <div>
-                {
-                events.map((event) => { 
+                <Col xs={6} md={4} />
+                <Col xs={12} md={8} >
+                {events.map((event) => { return <EventItem event={event} />})}
+                </Col>
+                </div>}
 
-                    return (<EventCard data={event} />);
-                }
-                )
-               
-                
-                })
-            </div>
+            </Grid>
+             
         );
     }
 }
 
-export default Event;
+export default Events;
