@@ -10,21 +10,20 @@ class Event extends Component {
 
         this.state = {
             load: true,
-            slug: props.match.params.id,
-            event: "",
+            events: "",
             notFound: false
         };
     }
 
-    async getData(slug, that) {
+    async getData(that) {
 
-        fetch(`http://aviline.herokuapp.com/api/event/${slug}`)
+        fetch(`http://aviline.herokuapp.com/api/event`)
             .then(function (response) {
                 return response.json();
             })
             .then(function (res) {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                that.setState({ event: res[0], load: false });
+                that.setState({ events: res, load: false });
             });
 
     }
@@ -32,13 +31,26 @@ class Event extends Component {
     render() {
 
         this.state.load &&
-        this.getData(this.state.slug, this);
+        this.getData(this);
 
-        const event = this.state.event;
+        const events = this.state.events;
 
 
         return (
-            this.state.notFound ? <NotFound /> : this.state.load ? <Spinner/> : <EventCard data={event} />
+            this.state.notFound ? <NotFound /> : 
+            this.state.load ? <Spinner/> :
+            
+            <div>
+                {
+                events.map((event) => { 
+
+                    return (<EventCard data={event} />);
+                }
+                )
+               
+                
+                })
+            </div>
         );
     }
 }

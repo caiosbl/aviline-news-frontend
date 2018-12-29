@@ -40,7 +40,7 @@ class CardNextEvents extends Component {
             const dateStartEvent = new Date(event.dateStart);
             const dateEndEvent = new Date(event.dateFinish);
             const today = new Date();
-            if (((dateStartEvent - today) > 0 || (dateEndEvent - today) > 0) && cont <= 4)
+            if (((dateStartEvent - today) > 0 || (dateEndEvent - today) > 0) && cont <= 3)
                 nextDates.push(event);
                 cont++;
         });
@@ -119,7 +119,7 @@ class CardNextEvents extends Component {
 
                                             }
                                         </th>
-                                        <Link to={'event/' + event.slug}> <td
+                                        <Link to={'events/' + event.slug}> <td
                                             style={{ fontFamily: 'Roboto Condensed',  width: 400}}
                                         >{event.title}</td></Link>
                                     </tr>

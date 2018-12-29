@@ -39,11 +39,20 @@ class Bar extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link to="/" className="Navlink"><NavLink>Home</NavLink></Link>
+              <NavItem >
+                <Link to="/" className="Navlink"><NavLink id='linkNav'>Home</NavLink></Link>
               </NavItem>
+
+              <NavItem>
+                <Link to="/events" className="Navlink" ><NavLink id='linkNav'>Eventos</NavLink></Link>
+              </NavItem>
+
+              <NavItem>
+                <Link to="/columns" className="Navlink"><NavLink id='linkNav'>Colunas</NavLink></Link>
+              </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle id='linkNav' nav caret>
                   Categorias
               </DropdownToggle>
                 <DropdownMenu right>
@@ -52,10 +61,6 @@ class Bar extends Component {
                 </DropdownItem>
                   <DropdownItem>
                     Option 2
-                </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
                 </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

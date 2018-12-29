@@ -9,6 +9,7 @@ import News from './components/News';
 import Ads1 from './components/Ads1';
 import Footer from './components/Footer';
 import Event from './components/Event';
+import Events from './components/Events';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -22,7 +23,8 @@ const routing = (
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />
-                <Route exact path="/event/:id" component={Event} />
+                <Route exact path="/events/:id" component={Event} />
+                <Route exact path="/events" component={Events} />
                 <Route path="*" component={Home} />
               
             </Switch>
