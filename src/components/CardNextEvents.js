@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardBody, Badge, CardHeader, CardText, Table } from 'reactstrap';
 import { Row, Grid, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
 import MaterialIcon from 'material-icons-react';
@@ -31,6 +32,7 @@ class CardNextEvents extends Component {
 
     getNextEvents(data) {
 
+        var cont = 0;
         var nextDates = [];
 
         data.map((event) => {
@@ -38,8 +40,9 @@ class CardNextEvents extends Component {
             const dateStartEvent = new Date(event.dateStart);
             const dateEndEvent = new Date(event.dateFinish);
             const today = new Date();
-            if ((dateStartEvent - today) > 0 || (dateEndEvent - today) > 0)
+            if (((dateStartEvent - today) > 0 || (dateEndEvent - today) > 0) && cont <= 4)
                 nextDates.push(event);
+                cont++;
         });
 
         return nextDates;
@@ -58,6 +61,18 @@ class CardNextEvents extends Component {
             });
 
     }
+
+
+    eventIsToday(startDate, endDate) {
+        const startDate_ = new Date(startDate);
+        const endDate_ = new Date(endDate);
+        const today = new Date();
+        return today >= startDate_ && today <= endDate_;
+    }
+
+
+
+
 
     render() {
 
@@ -83,18 +98,30 @@ class CardNextEvents extends Component {
                             <tbody>
                                 {this.getNextEvents(events).map((event) => {
                                     return <tr>
-                                        <th scope="row">
-                                            <Moment format="DD/MM"
-                                             style={{ color: "grey", 
-                                             fontSize: 14,
-                                             fontFamily: 'Roboto Condensed' 
-                                             }}>
-                                                {event.dateStart}
-                                            </Moment>
+                                        <th scope="row" >
+                                            {
+                                                this.eventIsToday(event.dateStart, event.dateFinish)
+                                                    ? <Badge color="secondary"
+                                                        style={{
+                                                            fontSize: 14,
+                                                            fontFamily: 'Roboto Condensed',
+                                                        }}>
+                                                        Hoje
+                                                </Badge>
+                                                    : <Moment format="DD/MM"
+                                                        style={{
+                                                            color: "grey",
+                                                            fontSize: 14,
+                                                            fontFamily: 'Roboto Condensed',
+                                                        }}>
+                                                        {event.dateStart}
+                                                    </Moment>
+
+                                            }
                                         </th>
-                                        <td
-                                        style={{fontFamily: 'Roboto Condensed' }}
-                                        >{event.title}</td>
+                                        <Link to={'event/' + event.slug}> <td
+                                            style={{ fontFamily: 'Roboto Condensed',  width: 400}}
+                                        >{event.title}</td></Link>
                                     </tr>
                                 })}
 
