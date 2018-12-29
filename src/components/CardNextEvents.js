@@ -56,7 +56,7 @@ class CardNextEvents extends Component {
             })
             .then(function (res) {
 
-                const date = res.sort((a, b) => { return new Date(a.dateStart) - new Date(b.dateStart) })
+                const date = res.sort((a, b) => { return new Date(a.dateStart) - new Date(b.dateStart) });
                 that.setState({ data: date, load: false });
             });
 
