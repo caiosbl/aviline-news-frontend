@@ -8,6 +8,7 @@ import Bar from './components/Navbar';
 import News from './components/News';
 import Ads1 from './components/Ads1';
 import Footer from './components/Footer';
+import Event from './components/Event';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -21,6 +22,7 @@ const routing = (
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />
+                <Route exact path="/event/:id" component={Event} />
                 <Route path="*" component={Home} />
               
             </Switch>
