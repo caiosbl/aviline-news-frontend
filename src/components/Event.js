@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewsCard from './NewsCard';
+import EventCard from './EventCard';
 import NotFound from './NotFound';
 
 class Event extends Component {
@@ -37,7 +37,7 @@ class Event extends Component {
 
 
         return (
-            this.state.notFound ? <NotFound /> : <NewsCard data={event} />
+            this.state.notFound ? <NotFound /> : <EventCard data={event} />
         );
     }
 }
