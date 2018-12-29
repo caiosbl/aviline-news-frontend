@@ -49,6 +49,8 @@ class LatestNews extends Component {
                                 <td style={{width:600}}> <Link to={'news/' + news.slug}> {news.title}</Link></td>
                                 
                             </tr>);
+
+                            else return "";
                     })}
                 </CardBody>
                 

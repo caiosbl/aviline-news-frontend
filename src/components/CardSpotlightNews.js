@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, Badge, CardText } from 'reactstrap';
 import Spinner from './Spinner';
-import renderHTML from 'react-render-html';
 import { Link } from 'react-router-dom';
 import '../styles/CardSpotlightNews.css';
 

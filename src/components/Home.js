@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
-import { } from 'reactstrap';
 import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
-import MaterialIcon from 'material-icons-react';
 import Spinner from './Spinner';
 import CardSecondaryNews from './CardSecondaryNews';
 import CardQuotation from './CardQuotation';
+import CardNextEvents from './CardNextEvents';
 import '../styles/Home.css';
 
 
@@ -29,7 +28,7 @@ class Home extends Component {
                 return response.json();
             })
             .then(function (res) {
-                res.length == 0 ? that.setState({ notFound: true, load: false }) :
+                res.length === 0 ? that.setState({ notFound: true, load: false }) :
                 that.setState({ data: res, load: false });
             });
 
@@ -86,8 +85,9 @@ class Home extends Component {
                         <CardSecondaryNews position={1} data={this.state.data}/></div>}
                     </Col>
                     <Col md={4} mdPull={2} style={{marginBottom: 10}}>
-                        <CardQuotation/>    
+                        <CardNextEvents/>    
                     </Col>
+                   
     
                 </Row>
 
@@ -96,6 +96,10 @@ class Home extends Component {
                     <Col md={8} mdPull={4} style={{marginBottom: 40}}>
                     {this.state.load || this.state.notFound ? <Spinner /> : 
                     <LatestNews data={this.state.data} />}
+                    </Col>
+
+                    <Col md={4} mdPull={2} style={{marginBottom: 10}}>
+                        <CardQuotation/>    
                     </Col>
 
                 </Row>

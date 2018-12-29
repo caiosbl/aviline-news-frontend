@@ -7,6 +7,13 @@ import MaterialIcon from 'material-icons-react';
 import renderHTML from 'react-render-html';
 
 
+const HeaderQuotationStyle = {
+    width: 300,
+    color: 'red',
+    borderBottom: '3px solid red',
+    marginTop: 3
+};
+
 
 class CardQuotation extends Component {
 
@@ -24,6 +31,8 @@ class CardQuotation extends Component {
 
         };
     }
+
+ 
 
 
     getDate(date) {
@@ -168,13 +177,7 @@ class CardQuotation extends Component {
                 <CardBody>
                     <Grid>
 
-                        <Row
-                            style={{
-                                width: 300,
-                                color: 'red',
-                                borderBottom: '3px solid red'
-                            }}
-                        >
+                        <Row  style={HeaderQuotationStyle}>
                             <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Dólar(PTAX)</b></span> <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
                         </Row>
 
@@ -203,11 +206,7 @@ class CardQuotation extends Component {
                             </Row>}
 
                         <Row
-                            style={{
-                                width: 300,
-                                color: 'red',
-                                borderBottom: '3px solid red'
-                            }}
+                            style={HeaderQuotationStyle}
                         >
                             <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Frango (KG)</b></span> <small style={{ marginLeft: 10 }}>Fonte: CEPEA</small> </CardText>
                         </Row>
@@ -235,11 +234,7 @@ class CardQuotation extends Component {
 
 
                         <Row
-                            style={{
-                                width: 300,
-                                color: 'red',
-                                borderBottom: '3px solid red'
-                            }}
+                            style={HeaderQuotationStyle}
                         >
                             <CardText style={{ fontFamily: 'Roboto Condensed' }}>
                                 <span><b>Milho</b></span>
@@ -261,11 +256,7 @@ class CardQuotation extends Component {
                         </Row>
 
                         <Row
-                            style={{
-                                width: 300,
-                                color: 'red',
-                                borderBottom: '3px solid red'
-                            }}
+                            style={HeaderQuotationStyle}
                         >
                             <CardText style={{ fontFamily: 'Roboto Condensed' }}>
                                 <span><b>Soja (SC de 60KG)</b></span>
