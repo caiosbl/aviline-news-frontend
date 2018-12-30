@@ -15,7 +15,9 @@ import {
   DropdownItem
 } from 'reactstrap';
 
-import { Image} from 'react-bootstrap';
+import Spinner from './Spinner';
+
+import { Image } from 'react-bootstrap';
 import '../styles/Navbar.css';
 class Bar extends Component {
   constructor(props) {
@@ -23,15 +25,42 @@ class Bar extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      categories: '',
+      load: true
     };
   }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+
+
+  async getCategories(that) {
+    try {
+      fetch(`http://aviline.herokuapp.com/api/category`)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (res) {
+          res.length === 0 ? that.setState({ load: false }) :
+            that.setState({ categories: res, load: false});
+        });
+    }
+    catch (e) { }
   }
+
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  renderCategories(that) {
+
+    return that.state.load ? <Spinner /> :
+      that.state.categories.map((category) => <Link to={`categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></Link>);
+
+  }
+
+
   render() {
+
+    this.state.load && this.getCategories(this);
     return (
       <div>
         <Navbar color="danger" dark expand="md">
@@ -56,12 +85,7 @@ class Bar extends Component {
                   Categorias
               </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Notícias
-                </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                </DropdownItem>
+                  {this.renderCategories(this)}
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

@@ -160,6 +160,18 @@ class Events extends Component {
         );
     }
 
+    renderItems(events){
+        return(
+            events.length === 0 ? 
+            <h3  style={{ fontFamily: 'Roboto Condensed, sans-serif',margin:20 }}>
+            Ops, não há resultados....
+            </h3>:
+            events.map((event) => { return <EventItem event={event} /> }))
+        
+        
+        ;
+    }
+
 
 
     render() {
@@ -182,7 +194,7 @@ class Events extends Component {
                                 <StickyBox>   {this.getFilterCard(this)} </StickyBox>
                             </Col>
                             <Col xs={8} md={8} id="col" >
-                                {events.map((event) => { return <EventItem event={event} /> })}
+                                {this.renderItems(events)}
 
                             </Col>
 
