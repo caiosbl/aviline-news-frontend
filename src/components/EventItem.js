@@ -11,22 +11,16 @@ import 'moment/locale/pt-br';
 class EventItem extends Component {
 
     constructor(props) {
-        super(props);
-
-        this.state = {
-            event: props.event
-        };
+        super(props);  
     }
 
 
 
     render() {
 
-
-        const event = this.state.event;
+        const event = this.props.event;
         const hasImage = event.image !== undefined;
         const mdDataCol = hasImage ? 8 : 12;
-
 
         return (
             <Card style={{ margin: 20 }}>
@@ -65,12 +59,12 @@ class EventItem extends Component {
                                 </h5>
 
                                 <h5> <span style={{ marginRight: 4 }}>
-                                <MaterialIcon icon="location_on" color="black" size={16} /></span>
-{event.location}
+                                    <MaterialIcon icon="location_on" color="black" size={16} /></span>
+                                    {event.location}
 
                                 </h5>
 
-                               <Link to={`/events/${event.slug}`}> <Button color="danger">Ver Mais</Button></Link>
+                                <Link to={`/events/${event.slug}`}> <Button color="danger">Ver Mais</Button></Link>
 
                             </Col>
                         </Row>
