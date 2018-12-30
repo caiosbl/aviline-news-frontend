@@ -19,12 +19,14 @@ class Events extends Component {
             filterType: "Título",
             titleSearch: "",
             filtered: [],
-            date: ''
+            date: '',
+            location: ''
         };
 
         this.filterByTitle = this.filterByTitle.bind(this);
         this.handlerTitle = this.handlerTitle.bind(this);
         this.handlerDate = this.handlerDate.bind(this);
+        this.handlerLocation = this.handlerLocation.bind(this);
     }
 
     async getData(that) {
@@ -51,15 +53,21 @@ class Events extends Component {
         this.filterByDate(date);
     }
 
-    filterByDate(date){
+    handlerLocation(e) {
+        const location= e.target.value;
+        this.setState({ location: location });
+        this.filterByLocation(location);
+    }
+
+    filterByDate(date) {
         const date_ = new Date(date);
-        const filteredData = this.state.events.filter(function(e){
-            const startDate_ = new Date(e.dateStart.slice(0,10));
+        const filteredData = this.state.events.filter(function (e) {
+            const startDate_ = new Date(e.dateStart.slice(0, 10));
             var endDate_ = new Date(e.dateFinish);
             endDate_.setHours(23, 59, 59);
             const day = new Date(date_);
             return day >= startDate_ && day <= endDate_;
-        
+
         });
         console.log(filteredData);
         this.setState({ filtered: date === "" ? this.state.events : filteredData });
@@ -68,6 +76,11 @@ class Events extends Component {
     filterByTitle(title) {
         const filteredData = this.state.events.filter(e => e.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
         this.setState({ filtered: title.trim() === '' ? this.state.events : filteredData });
+    }
+
+    filterByLocation(location) {
+        const filteredData = this.state.events.filter(e => e.location.toLowerCase().indexOf(location.toLowerCase()) !== -1);
+        this.setState({ filtered: location.trim() === '' ? this.state.events : filteredData });
     }
 
     getFilterCard(that) {
@@ -102,6 +115,16 @@ class Events extends Component {
                             onChange={this.handlerDate}>
                         </Input>
                     }
+
+                    {this.state.filterType === 'Localização' &&
+                        <Input type="text" name="location"
+                            value={this.state.location}
+                            style={{ marginTop: 10 }}
+                            placeholder={'Digite a Localização que deseja...'}
+                            onChange={this.handlerLocation}>
+                        </Input>
+                    }
+
                 </CardBody>
             </Card>
 
