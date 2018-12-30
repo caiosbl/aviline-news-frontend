@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import EventCard from './EventCard';
 import NotFound from './NotFound';
 import Spinner from './Spinner';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {Grid} from  'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Event extends Component {
 
@@ -29,6 +32,18 @@ class Event extends Component {
 
     }
 
+    getBreadcrumb(that) {
+        return (
+
+            <Breadcrumb>
+                <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
+                <BreadcrumbItem><Link to='/events'>Eventos</Link></BreadcrumbItem>
+                <BreadcrumbItem active>{that.state.event.title}</BreadcrumbItem>
+            </Breadcrumb>
+
+        );
+    }
+
     render() {
 
         this.state.load &&
@@ -38,7 +53,12 @@ class Event extends Component {
 
 
         return (
-            this.state.notFound ? <NotFound /> : this.state.load ? <Spinner/> : <EventCard data={event} />
+            this.state.notFound ? <NotFound /> : this.state.load ? <Spinner/> : 
+            
+            <Grid>
+                {this.getBreadcrumb(this)}
+            <EventCard data={event} />
+            </Grid>
         );
     }
 }

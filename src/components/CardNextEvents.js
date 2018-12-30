@@ -80,8 +80,6 @@ class CardNextEvents extends Component {
         const events = this.state.data;
 
 
-
-
         return (
 
             this.state.load ? <Spinner /> :
