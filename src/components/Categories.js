@@ -30,6 +30,7 @@ class Categories extends Component {
         };
 
         this.handlerCategory = this.handlerCategory.bind(this);
+        this.getBreadcrumb = this.getBreadcrumb.bind(this);
     }
 
 
@@ -114,10 +115,13 @@ class Categories extends Component {
     }
 
     getBreadcrumb() {
+        console.log(this.props.match.params);
         return (
             <Breadcrumb>
                 <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
-                <BreadcrumbItem active>Categorias</BreadcrumbItem>
+                <BreadcrumbItem>Categorias</BreadcrumbItem>
+
+                <BreadcrumbItem active >   {this.props.match.params.id} </BreadcrumbItem>
             </Breadcrumb>
         );
     }
