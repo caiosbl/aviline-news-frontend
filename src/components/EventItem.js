@@ -58,13 +58,21 @@ class EventItem extends Component {
 
                                 </h5>
 
-                                <h5> <span style={{ marginRight: 4 }}>
+                                <h5
+                                 style={{ fontFamily: 'Roboto Condensed, sans-serif' }}
+                                > <span style={{ marginRight: 4 }}>
                                     <MaterialIcon icon="location_on" color="black" size={16} /></span>
                                     {event.location}
 
                                 </h5>
 
-                                <Link to={`/events/${event.slug}`}> <Button color="danger">Ver Mais</Button></Link>
+                                <Link to={`/events/${event.slug}`}> <Button color="danger"
+                                 style={{ fontFamily: 'Roboto Condensed, sans-serif' }}
+                                >
+                                
+                                Ver Mais
+                                
+                                </Button></Link>
 
                             </Col>
                         </Row>

@@ -29,6 +29,24 @@ class Events extends Component {
         this.handlerLocation = this.handlerLocation.bind(this);
     }
 
+    getNextEvents(data) {
+
+        var nextDates = [];
+
+        data.map((event) => {
+            const dateStartEvent = new Date(event.dateStart);
+            var dateEndEvent = new Date(event.dateFinish);
+            dateEndEvent.setHours(23, 59, 59);
+            const today = new Date();
+
+            if ((dateStartEvent >= today || dateEndEvent >= today)) {
+                nextDates.push(event);
+            }
+        });
+
+        return nextDates;
+    }
+
     async getData(that) {
         fetch(`http://aviline.herokuapp.com/api/event`)
             .then(function (response) {
@@ -36,8 +54,10 @@ class Events extends Component {
             })
             .then(function (res) {
                 const data = res.sort((a, b) => { return new Date(a.dateStart) - new Date(b.dateStart) });
+
+                const nextEvents = that.getNextEvents(data);
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                    that.setState({ events: data, filtered: data, load: false });
+                    that.setState({ events: nextEvents, filtered: nextEvents, load: false });
             });
     }
 
@@ -54,7 +74,7 @@ class Events extends Component {
     }
 
     handlerLocation(e) {
-        const location= e.target.value;
+        const location = e.target.value;
         this.setState({ location: location });
         this.filterByLocation(location);
     }
