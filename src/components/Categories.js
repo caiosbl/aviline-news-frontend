@@ -86,7 +86,6 @@ class Categories extends Component {
 
     filterByCategory(category,that) {
         const filteredData = that.state.posts.filter(e => that.includeCategory(e.categories,category));
-        console.log(category);
         that.setState({ category: category,redirect: true, redirectRoute:`/categories/${category}` });
         that.setState({ filtered: category.trim() === '' ? that.state.filtered : filteredData, 
     flagRouteId: true,category:category, flagFirstFilter: true });
@@ -136,6 +135,8 @@ class Categories extends Component {
     }
 
     render() {
+
+       
 
         this.state.loadPost && this.getPosts(this);
         this.state.loadCategory && this.getCategories(this);

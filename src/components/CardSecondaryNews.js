@@ -17,6 +17,10 @@ class CardSecondaryNews extends Component {
             data: props.data
 
         };
+
+     
+
+
     }
 
 

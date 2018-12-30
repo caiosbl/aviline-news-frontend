@@ -53,7 +53,7 @@ class Bar extends Component {
   renderCategories(that) {
 
     return that.state.load ? <Spinner /> :
-      that.state.categories.map((category) => <Link to={`/categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></Link>);
+      that.state.categories.map((category) => <a href={`/categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></a>);
 
   }
 
@@ -61,6 +61,8 @@ class Bar extends Component {
   render() {
 
     this.state.load && this.getCategories(this);
+
+ 
     return (
       <div>
         <Navbar color="danger" dark expand="md">
@@ -81,7 +83,7 @@ class Bar extends Component {
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle id='linkNav' nav caret>
+                <DropdownToggle id='linkNav' nav caret >
                   Categorias
               </DropdownToggle>
                 <DropdownMenu right>
