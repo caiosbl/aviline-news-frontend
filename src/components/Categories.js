@@ -3,7 +3,7 @@ import EventItem from './EventItem';
 import NotFound from './NotFound';
 import Spinner from './Spinner';
 import { Grid, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, Button } from 'reactstrap';
 import MaterialIcon from 'material-icons-react';
 import StickyBox from "react-sticky-box/dist/esnext";
@@ -22,8 +22,14 @@ class Categories extends Component {
             notFound: false,
             categories: "",
             category: "",
-            filtered: []
+            filtered: [],
+            redirect: false,
+            redirectTo: '',
+            flagRouteId: false,
+            flagFirstFilter: false
         };
+
+        this.handlerCategory = this.handlerCategory.bind(this);
     }
 
 
@@ -34,8 +40,14 @@ class Categories extends Component {
                     return response.json();
                 })
                 .then(function (res) {
+                    const category = that.props.match.params.id;
+                    const categoryState = that.state.category;
+
                     res.length === 0 ? that.setState({ notFound: true, loadCategory: false }) :
-                        that.setState({ categories: res, loadCategory: false, category: res[0].name });
+                        that.setState({ categories: res, loadCategory: false,
+                             category: category === undefined ? res[0].name : categoryState
+                        });
+                     
                 });
         }
         catch (e) { }
@@ -58,10 +70,31 @@ class Categories extends Component {
     }
 
 
+    handlerCategory(e) {
+        const category = e.target.value;
+        this.filterByCategory(category,this);
+    }
+
+
+    includeCategory = (categories, category) => {
+        for(var i = 0; i < categories.length ; i++){
+            if(categories[i].name === category) return true;
+        }
+
+        return false;
+     };
+
+    filterByCategory(category,that) {
+        const filteredData = that.state.posts.filter(e => that.includeCategory(e.categories,category));
+        console.log(category);
+        that.setState({ category: category,redirect: true, redirectRoute:`/categories/${category}` });
+        that.setState({ filtered: category.trim() === '' ? that.state.filtered : filteredData, 
+    flagRouteId: true,category:category, flagFirstFilter: true });
+    }
+
     renderCategoriesOptions(that) {
         return (that.state.categories.map((category) => <option>{category.name}</option>));
     }
-
 
     getFilterCard(that) {
         return (
@@ -72,7 +105,7 @@ class Categories extends Component {
                     <Label for="exampleSelect">Filtrar por Categoria:</Label>
                     <Input type="select" name="select"
                         value={this.state.category}
-                        onChange={(e) => this.setState({ category: e.target.value })}>
+                        onChange={this.handlerCategory}>
                         {that.renderCategoriesOptions(that)}
                     </Input>
                 </CardBody>
@@ -90,16 +123,16 @@ class Categories extends Component {
         );
     }
 
-    renderItems(posts){
-        return(
-            posts.length === 0 ? 
-            <h3  style={{ fontFamily: 'Roboto Condensed, sans-serif',margin:20 }}>
-            Ops, não há resultados....
-            </h3>:
-            posts.map((post) => { return <NewsItem data={post} /> }))
-        
-        
-        ;
+    renderItems(posts) {
+        return (
+            posts.length === 0 ?
+                <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', margin: 20 }}>
+                    Ops, não há resultados....
+            </h3> :
+                posts.map((post) => { return <NewsItem data={post} /> }))
+
+
+            ;
     }
 
     render() {
@@ -108,9 +141,20 @@ class Categories extends Component {
         this.state.loadCategory && this.getCategories(this);
 
         const load = this.state.loadPost || this.state.loadCategory;
+        const category = this.props.match.params.id;
+        const flagRouteId = this.state.flagRouteId;
+        const flagFirstFilter = this.state.flagFirstFilter;
+
+       !load && !flagRouteId && !this.state.redirect && category !== undefined && 
+       this.filterByCategory(category,this);
+       
+       !load  && !flagFirstFilter && category === undefined && 
+       this.filterByCategory(this.state.category,this);
 
         return (
             <Grid>
+
+                {this.state.redirect && <Redirect to={this.state.redirectRoute}/>}
                 <Row>
                     <Col xs={12} md={12} >
                         {this.getBreadcrumb()}
@@ -126,7 +170,7 @@ class Categories extends Component {
                             </Col>
                             <Col xs={8} md={8} id="col" >
 
-                            {this.renderItems(this.state.posts)}
+                                {this.renderItems(this.state.filtered)}
                             </Col>
                         </Row>
                 }

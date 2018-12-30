@@ -26,7 +26,9 @@ const routing = (
                 <Route exact path="/news/:id" component={News} />
                 <Route exact path="/events/:id" component={Event} />
                 <Route exact path="/events" component={Events} />
-                <Route  path="/categories" component={Categories} />
+                <Route exact path="/categories/:id" component={Categories} />
+                <Route exact path="/categories" component={Categories} />
+              
                 <Route path="*" component={Home} />
               
             </Switch>
