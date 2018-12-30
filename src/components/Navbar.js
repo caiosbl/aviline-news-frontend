@@ -53,7 +53,7 @@ class Bar extends Component {
   renderCategories(that) {
 
     return that.state.load ? <Spinner /> :
-      that.state.categories.map((category) => <Link to={`categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></Link>);
+      that.state.categories.map((category) => <Link to={`/categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></Link>);
 
   }
 

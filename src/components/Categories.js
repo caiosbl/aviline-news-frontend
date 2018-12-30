@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, Button } from 'reactstrap';
 import MaterialIcon from 'material-icons-react';
 import StickyBox from "react-sticky-box/dist/esnext";
+import NewsItem from './NewsItem';
 
 
 
@@ -89,6 +90,18 @@ class Categories extends Component {
         );
     }
 
+    renderItems(posts){
+        return(
+            posts.length === 0 ? 
+            <h3  style={{ fontFamily: 'Roboto Condensed, sans-serif',margin:20 }}>
+            Ops, não há resultados....
+            </h3>:
+            posts.map((post) => { return <NewsItem data={post} /> }))
+        
+        
+        ;
+    }
+
     render() {
 
         this.state.loadPost && this.getPosts(this);
@@ -113,7 +126,7 @@ class Categories extends Component {
                             </Col>
                             <Col xs={8} md={8} id="col" >
 
-
+                            {this.renderItems(this.state.posts)}
                             </Col>
                         </Row>
                 }

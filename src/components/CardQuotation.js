@@ -49,6 +49,7 @@ class CardQuotation extends Component {
 
         var date = that.getDate(new Date());
 
+        try{
         request();
 
         function request() {
@@ -72,6 +73,9 @@ class CardQuotation extends Component {
                     }
                 });
         }
+
+    }
+    catch(e){}
 
     }
 
