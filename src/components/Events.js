@@ -16,13 +16,15 @@ class Events extends Component {
             load: true,
             events: "",
             notFound: false,
-            selectionTypeSearch: "Título",
+            filterType: "Título",
             titleSearch: "",
-            filtered: []
+            filtered: [],
+            date: ''
         };
 
         this.filterByTitle = this.filterByTitle.bind(this);
         this.handlerTitle = this.handlerTitle.bind(this);
+        this.handlerDate = this.handlerDate.bind(this);
     }
 
     async getData(that) {
@@ -43,6 +45,26 @@ class Events extends Component {
         this.filterByTitle(title);
     }
 
+    handlerDate(e) {
+        const date = e.target.value;
+        this.setState({ date: date });
+        this.filterByDate(date);
+    }
+
+    filterByDate(date){
+        const date_ = new Date(date);
+        const filteredData = this.state.events.filter(function(e){
+            const startDate_ = new Date(e.dateStart.slice(0,10));
+            var endDate_ = new Date(e.dateFinish);
+            endDate_.setHours(23, 59, 59);
+            const day = new Date(date_);
+            return day >= startDate_ && day <= endDate_;
+        
+        });
+        console.log(filteredData);
+        this.setState({ filtered: date === "" ? this.state.events : filteredData });
+    }
+
     filterByTitle(title) {
         const filteredData = this.state.events.filter(e => e.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
         this.setState({ filtered: title.trim() === '' ? this.state.events : filteredData });
@@ -50,25 +72,36 @@ class Events extends Component {
 
     getFilterCard(that) {
         return (
-            <Card style={{ margin: 20}} id="filterCard">
+            <Card style={{ margin: 20 }} id="filterCard">
                 <CardHeader style={{ backgroundColor: '#CC0000', color: 'white', fontFamily: 'Squada One, cursive' }}>
                     <h3><span style={{ marginRight: 4 }}><MaterialIcon icon="search" color="white" size={20} /></span>Filtrar</h3></CardHeader>
                 <CardBody>
                     <Label for="exampleSelect">Filtrar por:</Label>
                     <Input type="select" name="select"
-                        value={this.state.selectionTypeSearch}
-                        onChange={(e) => this.setState({ selectionTypeSearch: e.target.value })}>
+                        value={this.state.filterType}
+                        onChange={(e) => this.setState({ filterType: e.target.value })}>
                         <option>Título</option>
                         <option>Data</option>
                         <option>Localização</option>
                     </Input>
 
-                    <Input type="text" name="title"
-                        value={this.state.titleSearch}
-                        style={{ marginTop: 10 }}
-                        placeholder={'Digite o título que deseja buscar ...'}
-                        onChange={this.handlerTitle}>
-                    </Input>
+                    {this.state.filterType === 'Título' &&
+                        <Input type="text" name="title"
+                            value={this.state.titleSearch}
+                            style={{ marginTop: 10 }}
+                            placeholder={'Digite o título que deseja buscar ...'}
+                            onChange={this.handlerTitle}>
+                        </Input>
+                    }
+
+                    {this.state.filterType === 'Data' &&
+                        <Input type="date" name="date"
+                            value={this.state.date}
+                            style={{ marginTop: 10 }}
+                            placeholder={'Digite o título que deseja buscar ...'}
+                            onChange={this.handlerDate}>
+                        </Input>
+                    }
                 </CardBody>
             </Card>
 
@@ -103,7 +136,7 @@ class Events extends Component {
                         <Row>
 
                             <Col xs={4} md={4} >
-                            <StickyBox>   {this.getFilterCard(this)} </StickyBox>
+                                <StickyBox>   {this.getFilterCard(this)} </StickyBox>
                             </Col>
                             <Col xs={8} md={8} id="col" >
                                 {events.map((event) => { return <EventItem event={event} /> })}

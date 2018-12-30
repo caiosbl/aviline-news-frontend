@@ -36,13 +36,16 @@ class CardNextEvents extends Component {
         var nextDates = [];
 
         data.map((event) => {
-
             const dateStartEvent = new Date(event.dateStart);
-            const dateEndEvent = new Date(event.dateFinish);
+            var dateEndEvent = new Date(event.dateFinish);
+            dateEndEvent.setHours(23, 59, 59);
             const today = new Date();
-            if (((dateStartEvent - today) > 0 || (dateEndEvent - today) > 0) && cont <= 3)
+
+            if ((dateStartEvent >= today || dateEndEvent >= today) && cont <= 2) {
+
                 nextDates.push(event);
                 cont++;
+            }
         });
 
         return nextDates;
@@ -65,12 +68,11 @@ class CardNextEvents extends Component {
 
     eventIsToday(startDate, endDate) {
         const startDate_ = new Date(startDate);
-        const endDate_ = new Date(endDate);
+        var endDate_ = new Date(endDate);
+        endDate_.setHours(23, 59, 59);
         const today = new Date();
         return today >= startDate_ && today <= endDate_;
     }
-
-
 
 
 
@@ -118,7 +120,7 @@ class CardNextEvents extends Component {
                                             }
                                         </th>
                                         <Link to={'events/' + event.slug}> <td
-                                            style={{ fontFamily: 'Roboto Condensed',  width: 400}}
+                                            style={{ fontFamily: 'Roboto Condensed', width: 400 }}
                                         >{event.title}</td></Link>
                                     </tr>
                                 })}
