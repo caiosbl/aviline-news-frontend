@@ -7,7 +7,7 @@ class Footer extends Component {
     render() {
 
         return (
-            <div style={{ width: 'auto', backgroundColor: '#CC0000', 
+            <div style={{ width: 'auto', backgroundColor: '#dc3545', 
             color: 'white', textAlign: 'center', fontFamily: 'Roboto Condensed',
             paddingTop: 50,paddingBottom: 50
             }}>
