@@ -74,7 +74,9 @@ class EventItem extends Component {
 
                         <Row>
 
-                            {hasImage && <Col xs={6} md={4} >
+                            
+
+                            {hasImage && <Col xs={6} xsOffset={4} >
 
                                 <Image src={event.image.url} thumbnail />
 

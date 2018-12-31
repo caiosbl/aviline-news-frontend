@@ -106,7 +106,7 @@ class Events extends Component {
     getFilterCard(that) {
         return (
             <Card style={{ margin: 20 }} id="filterCard">
-                <CardHeader style={{ backgroundColor: '#CC0000', color: 'white', fontFamily: 'Squada One, cursive' }}>
+                <CardHeader style={{ backgroundColor: '#dc3545', color: 'white', fontFamily: 'Squada One, cursive' }}>
                     <h3><span style={{ marginRight: 4 }}><MaterialIcon icon="search" color="white" size={20} /></span>Filtrar</h3></CardHeader>
                 <CardBody>
                     <Label for="exampleSelect">Filtrar por:</Label>

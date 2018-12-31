@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Col, Image, Row } from 'react-bootstrap';
-import { Card, CardHeader, CardBody, Button,Badge } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 import Moment from 'react-moment';
@@ -17,10 +17,10 @@ class NewsItem extends Component {
 
     renderCategory(categorieList) {
         return categorieList.map((categorie) => {
-            return<a  href={`/categories/${categorie.name}`}><Badge key={categorie.key} 
-            color='danger'
-            style={{marginLeft:5,fontFamily: 'Roboto Condensed, sans-serif'}}
-            >{categorie.name}</Badge></a> ;
+            return <a href={`/categories/${categorie.name}`}><Badge key={categorie.key}
+                color='danger'
+                style={{ marginLeft: 5, fontFamily: 'Roboto Condensed, sans-serif' }}
+            >{categorie.name}</Badge></a>;
         })
     }
 
@@ -43,7 +43,7 @@ class NewsItem extends Component {
 
                         <Row>
 
-                            <h6 style={{ fontFamily: 'Roboto Condensed, sans-serif',color:"#dc3545" }}>
+                            <h6 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545" }}>
                                 <span style={{ marginRight: 4 }}>
                                     <MaterialIcon icon="hquery_builder" color="#dc3545" size={11} /></span>
 
@@ -60,21 +60,26 @@ class NewsItem extends Component {
 
                             </h6>
 
+                            <h6 style={{ marginLeft: 12, color: "#dc3545", fontFamily: 'Roboto Condensed, sans-serif' }}>
+                                <span style={{ marginRight: 4 }}>
+                                    <MaterialIcon icon="person" color="#dc3545" size={11} /></span>
+                                {`${news.author.name.first} ${news.author.name.last}`}
+                            </h6>
+
+                        </Row>
+
+                       
+
+                        <Row>
+
                             <h6 style={{ marginLeft: 12 }}>
                                 <MaterialIcon icon="label" color="#dc3545" size={11} />
                                 {this.renderCategory(news.categories)}
                             </h6>
 
-                            <h6 style={{ marginLeft: 12, color:"#dc3545",fontFamily: 'Roboto Condensed, sans-serif' }}>
-                            <span style={{ marginRight: 4 }}>
-                                    <MaterialIcon icon="person" color="#dc3545" size={11} /></span>
-                                {`${news.author.name.first} ${news.author.name.last}`}
-                            </h6>
-
-                   
-
-
                         </Row>
+
+
                         <Row>
                             {hasImage &&
                                 <Col xs={6} md={4} >
