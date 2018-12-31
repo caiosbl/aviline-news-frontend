@@ -9,8 +9,8 @@ import renderHTML from 'react-render-html';
 
 const HeaderQuotationStyle = {
     width: 300,
-    color: 'red',
-    borderBottom: '3px solid red',
+    color: '#dc3545',
+    borderBottom: '3px solid #dc3545',
     marginTop: 3
 };
 
@@ -32,7 +32,7 @@ class CardQuotation extends Component {
         };
     }
 
- 
+
 
 
     getDate(date) {
@@ -49,37 +49,37 @@ class CardQuotation extends Component {
 
         var date = that.getDate(new Date());
 
-        try{
+        try {
 
             request();
 
-        function request() {
-            fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='${date}'&$top=100&$format=json`)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (res) {
+            function request() {
+                fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='${date}'&$top=100&$format=json`)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (res) {
 
 
-                    if (res.value.length === 0) {
-                        var newDate = new Date(date);
-                        newDate.setDate(newDate.getDate() - 1);
-                        date = that.getDate(newDate);
-                        request();
-                    }
+                        if (res.value.length === 0) {
+                            var newDate = new Date(date);
+                            newDate.setDate(newDate.getDate() - 1);
+                            date = that.getDate(newDate);
+                            request();
+                        }
 
-                    else {
-                        const dolarBuy = res.value[0].cotacaoCompra;
-                        const dolarSell = res.value[0].cotacaoVenda;
-                        that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
-                    }
-                });
-         
+                        else {
+                            const dolarBuy = res.value[0].cotacaoCompra;
+                            const dolarSell = res.value[0].cotacaoVenda;
+                            that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
+                        }
+                    });
+
+            }
+
+
         }
-       
-
-    }
-    catch(e){}
+        catch (e) { }
 
     }
 
@@ -177,7 +177,7 @@ class CardQuotation extends Component {
 
 
             <Card>
-                <CardHeader style={{ backgroundColor: '#CC0000' }}>
+                <CardHeader style={{ backgroundColor: '#dc3545' }}>
                     <h4 style={{ fontFamily: 'Squada One, cursive', color: 'white' }}>
                         <span style={{ marginRight: 4 }}><MaterialIcon icon="trending_up" color="white" size={20} /></span>
                         Cotações</h4></CardHeader>
@@ -185,7 +185,7 @@ class CardQuotation extends Component {
                 <CardBody>
                     <Grid>
 
-                        <Row  style={HeaderQuotationStyle}>
+                        <Row style={HeaderQuotationStyle}>
                             <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Dólar(PTAX)</b></span> <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
                         </Row>
 

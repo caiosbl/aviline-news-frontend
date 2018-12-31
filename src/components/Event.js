@@ -3,8 +3,9 @@ import EventCard from './EventCard';
 import NotFound from './NotFound';
 import Spinner from './Spinner';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import {Grid} from  'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FacebookProvider, Comments } from 'react-facebook';
 
 class Event extends Component {
 
@@ -27,7 +28,7 @@ class Event extends Component {
             })
             .then(function (res) {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                that.setState({ event: res[0], load: false });
+                    that.setState({ event: res[0], load: false });
             });
 
     }
@@ -47,18 +48,38 @@ class Event extends Component {
     render() {
 
         this.state.load &&
-        this.getData(this.state.slug, this);
+            this.getData(this.state.slug, this);
 
         const event = this.state.event;
 
+        console.log(this.props);
+
 
         return (
-            this.state.notFound ? <NotFound /> : this.state.load ? <Spinner/> : 
-            
-            <Grid>
-                {this.getBreadcrumb(this)}
-            <EventCard data={event} />
-            </Grid>
+            this.state.notFound ? <NotFound /> : this.state.load ? <Spinner /> :
+
+                <Grid style={{ marginBottom: 50 }}>
+                    {this.getBreadcrumb(this)}
+
+                    <Row>
+                        <Col xs={10} md={8}>
+                            <Row style={{marginTop:30}}><EventCard data={event} /></Row>
+
+                            <Row style={{marginTop:100}}><FacebookProvider appId="276953129067999">
+                                <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} />
+                            </FacebookProvider></Row>
+
+                        </Col>
+
+                    </Row>
+
+                    <Row>
+
+
+
+                    </Row>
+
+                </Grid>
         );
     }
 }

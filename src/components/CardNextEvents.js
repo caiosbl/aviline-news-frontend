@@ -86,7 +86,7 @@ class CardNextEvents extends Component {
 
             this.state.load ? <Spinner /> :
                 <Card>
-                    <CardHeader style={{ backgroundColor: '#CC0000' }}>
+                    <CardHeader style={{ backgroundColor: '#dc3545' }}>
                         <h4 style={{ fontFamily: 'Squada One, cursive', color: 'white' }}>
                             <span style={{ marginRight: 4 }}><MaterialIcon icon="event_note" color="white" size={20} /></span>
                             Próximos Eventos</h4></CardHeader>
