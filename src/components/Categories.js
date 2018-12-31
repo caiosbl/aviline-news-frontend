@@ -48,9 +48,7 @@ class Categories extends Component {
                     const categoryState = that.state.category;
 
                     res.length === 0 ? that.setState({ notFound: true, loadCategory: false }) :
-                        that.setState({ categories: res, loadCategory: false,
-                             category: category === undefined ? res[0].name : categoryState
-                        });
+                        that.setState({ categories: res, loadCategory: false});
                      
                 });
         }
@@ -122,6 +120,7 @@ class Categories extends Component {
                     <Input type="select" name="select"
                         value={this.state.category}
                         onChange={this.handlerCategory}>
+                        <option disabled selected></option>
                         {that.renderCategoriesOptions(that)}
                     </Input>
 
@@ -138,12 +137,13 @@ class Categories extends Component {
     }
 
     getBreadcrumb() {
+
+        const hasProp = this.props.match.params.id !== undefined;
         return (
             <Breadcrumb>
-                <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
-                <BreadcrumbItem>Categorias</BreadcrumbItem>
-
-                <BreadcrumbItem active >   {this.props.match.params.id} </BreadcrumbItem>
+                <BreadcrumbItem ><Link to='/'>Home</Link></BreadcrumbItem>
+                <BreadcrumbItem><Link to='/categories'>Categorias</Link></BreadcrumbItem>
+                {hasProp && <BreadcrumbItem active >   {this.props.match.params.id} </BreadcrumbItem>}
             </Breadcrumb>
         );
     }
@@ -175,8 +175,8 @@ class Categories extends Component {
        !load && !flagRouteId && !this.state.redirect && category !== undefined && 
        this.filterByCategory(category,this);
        
-       !load  && !flagFirstFilter && category === undefined && 
-       this.filterByCategory(this.state.category,this);
+       //!load  && !flagFirstFilter && category === undefined && 
+       //this.filterByCategory(this.state.category,this);
 
         return (
             <Grid>

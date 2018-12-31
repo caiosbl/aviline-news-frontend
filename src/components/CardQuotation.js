@@ -50,17 +50,19 @@ class CardQuotation extends Component {
         var date = that.getDate(new Date());
 
         try{
-        request();
+
+            request();
 
         function request() {
-            fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='${date}'&$top=100&$skip=0&$format=json&$select=cotacaoCompra,cotacaoVenda`)
+            fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='${date}'&$top=100&$format=json`)
                 .then(function (response) {
                     return response.json();
                 })
                 .then(function (res) {
 
+
                     if (res.value.length === 0) {
-                        var newDate = new Date();
+                        var newDate = new Date(date);
                         newDate.setDate(newDate.getDate() - 1);
                         date = that.getDate(newDate);
                         request();
@@ -72,7 +74,9 @@ class CardQuotation extends Component {
                         that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
                     }
                 });
+         
         }
+       
 
     }
     catch(e){}
@@ -192,7 +196,7 @@ class CardQuotation extends Component {
 
                                     <Badge color='danger' style={{ marginTop: 5 }}>
                                         <h6 style={{ padding: 5 }}>Compra</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarBuy.toFixed(2)}</h4>
+                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarBuy.toFixed(3)}</h4>
 
                                     </Badge>
 
@@ -202,7 +206,7 @@ class CardQuotation extends Component {
 
                                     <Badge color='danger' style={{ marginTop: 5 }}>
                                         <h6 style={{ padding: 5 }}>Venda</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarSell.toFixed(2)}</h4>
+                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarSell.toFixed(3)}</h4>
 
                                     </Badge>
 
