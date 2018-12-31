@@ -22,15 +22,18 @@ class Categories extends Component {
             notFound: false,
             categories: "",
             category: "",
-            filtered: [],
+            filteredByCategory: [],
             redirect: false,
             redirectTo: '',
             flagRouteId: false,
-            flagFirstFilter: false
+            flagFirstFilter: false,
+            titleSearch: '',
+            filteredMix: []
         };
 
         this.handlerCategory = this.handlerCategory.bind(this);
         this.getBreadcrumb = this.getBreadcrumb.bind(this);
+        this.handlerTitle = this.handlerTitle.bind(this);
     }
 
 
@@ -63,7 +66,7 @@ class Categories extends Component {
                 })
                 .then(function (res) {
                     res.length === 0 ? that.setState({ notFound: true, loadPost: false }) :
-                        that.setState({ posts: res, filtered: res, loadPost: false });
+                        that.setState({ posts: res, filteredByCategory: res, filteredMix:res, loadPost: false });
                 });
 
         }
@@ -76,6 +79,12 @@ class Categories extends Component {
         this.filterByCategory(category,this);
     }
 
+    handlerTitle(e) {
+        const title = e.target.value;
+        this.setState({titleSearch:title});
+        this.filterByTitle(title,this);
+    }
+
 
     includeCategory = (categories, category) => {
         for(var i = 0; i < categories.length ; i++){
@@ -85,10 +94,17 @@ class Categories extends Component {
         return false;
      };
 
+     filterByTitle(title,that) {
+        const filteredData = this.state.filteredByCategory.filter(e => e.title.toLowerCase().indexOf(title.toLowerCase()) !== -1);
+        that.setState({ filteredMix: title.trim() === '' ? this.state.filteredByCategory : filteredData });
+    }
+
     filterByCategory(category,that) {
         const filteredData = that.state.posts.filter(e => that.includeCategory(e.categories,category));
         that.setState({ category: category,redirect: true, redirectRoute:`/categories/${category}` });
-        that.setState({ filtered: category.trim() === '' ? that.state.filtered : filteredData, 
+
+       const data =  category.trim() === '' ? that.state.filteredByCategory : filteredData;
+        that.setState({ filteredByCategory:data, filteredMix: data, titleSearch: '',
     flagRouteId: true,category:category, flagFirstFilter: true });
     }
 
@@ -108,6 +124,13 @@ class Categories extends Component {
                         onChange={this.handlerCategory}>
                         {that.renderCategoriesOptions(that)}
                     </Input>
+
+                    <Label for="exampleSelect" style={{marginTop:10}}>Filtrar por Título:</Label>
+                    <Input type="text" name="titleSearch"
+                        value={this.state.titleSearch}
+                        placeholder={'Digite o título que deseja buscar ...'}
+                        onChange={this.handlerTitle}>
+                    </Input>
                 </CardBody>
             </Card>
 
@@ -115,7 +138,6 @@ class Categories extends Component {
     }
 
     getBreadcrumb() {
-        console.log(this.props.match.params);
         return (
             <Breadcrumb>
                 <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
@@ -175,7 +197,7 @@ class Categories extends Component {
                             </Col>
                             <Col xs={8} md={8} id="col" >
 
-                                {this.renderItems(this.state.filtered)}
+                                {this.renderItems(this.state.filteredMix)}
                             </Col>
                         </Row>
                 }
