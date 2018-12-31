@@ -54,6 +54,9 @@ class EventItem extends Component {
                                         {event.dateStart}</Moment>}  à  {<Moment
                                             locale="pt-br"
                                             format="D MMMM" withTitle
+                                        >{event.dateFinish}</Moment>} de {<Moment
+                                            locale="pt-br"
+                                            format="YYYY" withTitle
                                         >{event.dateFinish}</Moment>}
 
                                 </h5>
