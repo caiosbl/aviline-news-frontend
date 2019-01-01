@@ -31,9 +31,12 @@ class NewsCard extends Component {
 
     renderContent(htmlElement) {
 
-        if (htmlElement.length === undefined) return htmlElement.props.children.map((element) => {
+        
 
-            if (element.type === undefined)
+        if (htmlElement.length === undefined) return htmlElement.props.children.map((element) => {
+          
+
+            if (element.type === undefined )
                 return <p>{element}</p>;
             else if (element.type === 'img')
                 return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
@@ -41,16 +44,20 @@ class NewsCard extends Component {
         });
 
          else return htmlElement.map((e) => {
+            
 
             if (e.props !== undefined){
-            const element = e.props.children[0];
+           
+
+            return e.props.children.map((element) =>{
 
             if (element.type === undefined)
                 return <p>{element}</p>;
             else if (element.type === 'img')
                 return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
             else if (element.type !== 'br') return <p>{element}</p>;
-            }
+            });
+        }
 
         });
 
