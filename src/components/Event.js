@@ -82,12 +82,10 @@ class Event extends Component {
                                 <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} width={'auto'} />
                             </FacebookProvider>
                             <Visible xs sm>
-                                <Row>
+                            <Col xs={12} sm={12}>
                                     <AdsSideXs3 />
-                                </Row>
-                                <Row>
                                     <AdsSideXs4 />
-                                </Row>
+                                </Col>
                             </Visible>
 
 

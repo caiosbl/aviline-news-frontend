@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Image, Row, Col, Grid } from 'react-bootstrap';
-import '../../styles/Ads1.css';
+import { Image } from 'react-bootstrap';
+import { Row, Col, Container } from 'reactstrap';
+import { Visible, Hidden } from 'react-grid-system';
 
 class AdsTop extends Component {
 
@@ -8,21 +9,21 @@ class AdsTop extends Component {
   render() {
     return (
 
-      <Grid id="grid">
-        <Row className="show-grid">
-          <Col xsHidden md={2} />
-          <Col xs={8} md={6} >
-            <Image src="/ads1.png" id="ads" />
+      <Container style={{marginTop:10,marginBottom:10}}>
+        <Row>
+        <Hidden xs sm>
+          <Col  md={{ size: 10, offset: 1 }}>
+            <Image src="/ads1.png" style={{width:'100%',height:'80%'}} />
           </Col>
-          <Col xsHidden md={2} />
+          </Hidden>
+
+          <Visible xs sm>
+          <Col xs={12} sm={12}>
+            <Image src="/ads1.png" style={{width:'100%'}} />
+          </Col>
+          </Visible>
         </Row>
-
-
-      </Grid>
-
-
-
-
+      </Container>
     );
   }
 }

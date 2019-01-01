@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import renderHTML from 'react-render-html';
 import { Badge } from 'reactstrap';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col,Image } from 'react-bootstrap';
 import MaterialIcon from 'material-icons-react';
 import { Visible, Hidden } from 'react-grid-system';
 import AdsSideXs1 from './Ads/AdsSideXs1';
@@ -31,6 +31,40 @@ class EventCard extends Component {
         })
     }
 
+    renderContent(htmlElement) {
+
+
+
+        if (htmlElement.length === undefined) return htmlElement.props.children.map((element) => {
+
+
+            if (element.type === undefined)
+                return <p>{element}</p>;
+            else if (element.type === 'img')
+                return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
+            else if (element.type !== 'br') return <p>{element}</p>;
+        });
+
+        else return htmlElement.map((e) => {
+
+
+            if (e.props !== undefined) {
+
+
+                return e.props.children.map((element) => {
+
+                    if (element.type === undefined)
+                        return <p>{element}</p>;
+                    else if (element.type === 'img')
+                        return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
+                    else if (element.type !== 'br') return <p>{element}</p>;
+                });
+            }
+
+        });
+
+    }
+
     render() {
 
         const isLoading = this.props.data === "";
@@ -55,24 +89,22 @@ class EventCard extends Component {
                         locale="pt-br"
                         format="D MMMM" withTitle>
 
-                        {event.dateStart}</Moment>}  à  {<Moment
+                        {startDate}</Moment>}  à  {<Moment
                             locale="pt-br"
                             format="D MMMM" withTitle
-                        >{event.dateFinish}</Moment>} de {<Moment
+                        >{endDate}</Moment>} de {<Moment
                             locale="pt-br"
                             format="YYYY" withTitle
-                        >{event.dateFinish}</Moment>}</span>
+                        >{endDate}</Moment>}</span>
 
                 </h5>
             </Row>
 
             <Row>
-
                 <h5 style={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
                     <span style={{ marginRight: 4 }}>
                         <MaterialIcon icon="location_on" color="black" size={16} /></span>
                     <span>{event.location}</span>
-
                 </h5>
             </Row>
 
@@ -84,7 +116,12 @@ class EventCard extends Component {
 
 
             <Row>
-                {isLoading ? <Spinner /> : renderHTML(event.description)}
+
+                {isLoading ? <Spinner /> :
+                <div style={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
+                {this.renderContent(renderHTML(event.description))}
+                </div>}
+
             </Row>
 
             <Visible xs sm>
