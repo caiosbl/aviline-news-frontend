@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import NewsCard from './NewsCard';
 import NotFound from './NotFound';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { } from 'react-bootstrap';
+import { Container, Row, Col} from 'reactstrap';
+import AdsSideMd1 from './Ads/AdsSideMd1';
+import AdsSideMd2 from './Ads/AdsSideMd2';
+import AdsSideMd3 from './Ads/AdsSideMd3';
+import AdsSideMd4 from './Ads/AdsSideMd4';
+import { Visible, Hidden } from 'react-grid-system';
 
 class News extends Component {
 
@@ -40,13 +46,23 @@ class News extends Component {
 
         return (
 
-            <Grid style={{marginBottom:100}}>
+            <Container style={{marginBottom:100}}>
                 <Row>
-                    <Col xs={10} md={10}>  
+
+                  
+                    <Col xs={12} md={10}>  
                     {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
                     </Col>
+                   
+                   <Hidden xs sm> <Col  md={2} > 
+                    <AdsSideMd1/>
+                    <AdsSideMd2/>
+                    <AdsSideMd3/>
+                    <AdsSideMd4/>
+                    </Col>
+                    </Hidden>
                 </Row>
-            </Grid>
+            </Container>
         );
     }
 }

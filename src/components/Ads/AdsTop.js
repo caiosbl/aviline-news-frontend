@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Image, Row, Col, Grid } from 'react-bootstrap';
-import '../styles/Ads1.css';
+import '../../styles/Ads1.css';
 
-class Ads1 extends Component {
+class AdsTop extends Component {
 
 
   render() {
@@ -26,4 +26,4 @@ class Ads1 extends Component {
     );
   }
 }
-export default Ads1;
+export default AdsTop;

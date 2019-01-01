@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
 import Bar from './components/Navbar';
 import News from './components/News';
-import Ads1 from './components/Ads1';
+import AdsTop from './components/Ads/AdsTop';
 import Footer from './components/Footer';
 import Event from './components/Event';
 import Events from './components/Events';
@@ -20,7 +20,7 @@ const routing = (
 
         <div>
             <Bar/> 
-            <Ads1/>
+            <AdsTop/>
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />
