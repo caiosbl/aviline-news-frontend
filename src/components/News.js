@@ -42,7 +42,7 @@ class News extends Component {
 
             <Grid>
                 <Row>
-                    <Col xs={8} md={8}>  
+                    <Col xs={10} md={10}>  
                     {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
                     </Col>
                 </Row>
