@@ -58,7 +58,7 @@ class News extends Component {
                     <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545'}}>Comentários</h3>    
                                       
                    <FacebookProvider appId="276953129067999" language="pt_BR">
-                        <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} width={'auto'}/>
+                        <Comments href={window.location.href} numPosts={5} width={'auto'}/>
                     </FacebookProvider>
                     </Col>
                     

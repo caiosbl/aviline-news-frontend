@@ -13,13 +13,13 @@ class AdsTop extends Component {
         <Row>
         <Hidden xs sm>
           <Col  md={{ size: 10, offset: 1 }}>
-            <Image src="/ads1.png" style={{width:'100%',height:'80%'}} />
+            <Image src="/adsTop.png" style={{width:'100%',height:'80%'}} />
           </Col>
           </Hidden>
 
           <Visible xs sm>
           <Col xs={12} sm={12}>
-            <Image src="/ads1.png" style={{width:'100%'}} />
+            <Image src="/adsTopXs.png" style={{width:'100%'}} />
           </Col>
           </Visible>
         </Row>

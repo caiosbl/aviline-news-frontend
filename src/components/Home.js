@@ -7,6 +7,7 @@ import CardSecondaryNews from './CardSecondaryNews';
 import CardQuotation from './CardQuotation';
 import CardNextEvents from './CardNextEvents';
 import '../styles/Home.css';
+import AdsHome1 from './Ads/AdsHome1';
 
 
 
@@ -57,10 +58,7 @@ class Home extends Component {
                     {this.state.load || this.state.notFound ? <Spinner /> :
                         <CardSpotlightNews position={3} data={this.state.data} />}
                     </Col>
-
-
                 </Row>
-
 
                 <Row>
 
@@ -91,11 +89,30 @@ class Home extends Component {
     
                 </Row>
 
-                <Row style={{marginTop: 10}}>
+                <Row style={{marginTop: 2}}>
 
                     <Col md={8} mdPull={4} style={{marginBottom: 40}}>
+                    <Row>
+
+                    <Col md={3} >
+                    <AdsHome1/>
+                    </Col>
+                    <Col md={3}>
+                    <AdsHome1/>
+                    </Col>
+                    <Col md={3}>
+                    <AdsHome1/>
+                    </Col>
+                    <Col md={3}>
+                    <AdsHome1/>
+                    </Col>
+
+
+                    </Row>
+                    <Row>
                     {this.state.load || this.state.notFound ? <Spinner /> : 
                     <LatestNews data={this.state.data} />}
+                    </Row>
                     </Col>
 
                     <Col md={4} mdPull={2} style={{marginBottom: 10}}>

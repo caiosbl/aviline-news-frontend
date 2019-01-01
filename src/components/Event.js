@@ -79,7 +79,7 @@ class Event extends Component {
                             }}>Comentários</h3>
 
                             <FacebookProvider appId="276953129067999" language="pt_BR">
-                                <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} width={'auto'} />
+                                <Comments href={window.location.href} numPosts={5} width={'auto'} />
                             </FacebookProvider>
                             <Visible xs sm>
                             <Col xs={12} sm={12}>
@@ -87,9 +87,6 @@ class Event extends Component {
                                     <AdsSideXs4 />
                                 </Col>
                             </Visible>
-
-
-
                         </Col>
 
                         <Hidden xs sm> <Col md={2} >
@@ -99,12 +96,6 @@ class Event extends Component {
                             <AdsSideMd4 />
                         </Col>
                         </Hidden>
-
-                    </Row>
-
-                    <Row>
-
-
 
                     </Row>
 
