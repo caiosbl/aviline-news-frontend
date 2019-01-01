@@ -6,6 +6,13 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FacebookProvider, Comments } from 'react-facebook';
+import { Visible, Hidden } from 'react-grid-system';
+import AdsSideMd1 from './Ads/AdsSideMd1';
+import AdsSideMd2 from './Ads/AdsSideMd2';
+import AdsSideMd3 from './Ads/AdsSideMd3';
+import AdsSideMd4 from './Ads/AdsSideMd4';
+import AdsSideXs3 from './Ads/AdsSideXs3';
+import AdsSideXs4 from './Ads/AdsSideXs4';
 
 class Event extends Component {
 
@@ -52,7 +59,6 @@ class Event extends Component {
 
         const event = this.state.event;
 
-        console.log(this.props);
 
 
         return (
@@ -62,14 +68,39 @@ class Event extends Component {
                     {this.getBreadcrumb(this)}
 
                     <Row>
-                        <Col xs={10} md={8}>
-                            <Row style={{marginTop:30}}><EventCard data={event} /></Row>
+                        <Col xs={12} md={10}>
+                            <EventCard data={event} />
 
-                            <Row style={{marginTop:100}}><FacebookProvider appId="276953129067999" language="pt_BR">
-                                <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} />
-                            </FacebookProvider></Row>
+                            <h3 style={{
+                                fontFamily: 'Roboto Condensed, sans-serif',
+                                color: "#dc3545",
+                                marginTop: 20,
+                                borderBottom: '3px solid #dc3545'
+                            }}>Comentários</h3>
+
+                            <FacebookProvider appId="276953129067999" language="pt_BR">
+                                <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} width={'auto'} />
+                            </FacebookProvider>
+                            <Visible xs sm>
+                                <Row>
+                                    <AdsSideXs3 />
+                                </Row>
+                                <Row>
+                                    <AdsSideXs4 />
+                                </Row>
+                            </Visible>
+
+
 
                         </Col>
+
+                        <Hidden xs sm> <Col md={2} >
+                            <AdsSideMd1 />
+                            <AdsSideMd2 />
+                            <AdsSideMd3 />
+                            <AdsSideMd4 />
+                        </Col>
+                        </Hidden>
 
                     </Row>
 
