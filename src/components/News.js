@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewsCard from './NewsCard';
 import NotFound from './NotFound';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class News extends Component {
 
@@ -24,7 +25,7 @@ class News extends Component {
             })
             .then(function (res) {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                that.setState({ news: res[0], load: false });
+                    that.setState({ news: res[0], load: false });
             });
 
     }
@@ -32,13 +33,20 @@ class News extends Component {
     render() {
 
         this.state.load &&
-        this.getData(this.state.slug, this);
+            this.getData(this.state.slug, this);
 
         const news = this.state.news;
 
 
         return (
-            this.state.notFound ? <NotFound /> : <NewsCard data={news} />
+
+            <Grid>
+                <Row>
+                    <Col xs={8} md={8}>  
+                    {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 }

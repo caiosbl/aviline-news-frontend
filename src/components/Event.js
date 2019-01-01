@@ -65,7 +65,7 @@ class Event extends Component {
                         <Col xs={10} md={8}>
                             <Row style={{marginTop:30}}><EventCard data={event} /></Row>
 
-                            <Row style={{marginTop:100}}><FacebookProvider appId="276953129067999">
+                            <Row style={{marginTop:100}}><FacebookProvider appId="276953129067999" language="pt_BR">
                                 <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} />
                             </FacebookProvider></Row>
 
