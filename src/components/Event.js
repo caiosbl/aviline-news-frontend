@@ -27,6 +27,10 @@ class Event extends Component {
         };
     }
 
+    componentDidMount(){
+        document.title = "Portal Aviline";
+      }
+
     async getData(slug, that) {
 
         fetch(`http://aviline.herokuapp.com/api/event/${slug}`)
@@ -34,8 +38,12 @@ class Event extends Component {
                 return response.json();
             })
             .then(function (res) {
+
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ event: res[0], load: false });
+
+                const title = res[0].title;
+                if (title !== undefined) document.title = `Portal Aviline - ${title}`;
             });
 
     }
@@ -82,7 +90,7 @@ class Event extends Component {
                                 <Comments href={window.location.href} numPosts={5} width={'auto'} />
                             </FacebookProvider>
                             <Visible xs sm>
-                            <Col xs={12} sm={12}>
+                                <Col xs={12} sm={12}>
                                     <AdsSideXs3 />
                                     <AdsSideXs4 />
                                 </Col>

@@ -30,6 +30,10 @@ class Events extends Component {
         this.handlerLocation = this.handlerLocation.bind(this);
     }
 
+    componentDidMount(){
+        document.title = "Portal Aviline - Eventos";
+      }
+
     getNextEvents(data) {
 
         var nextDates = [];
@@ -59,6 +63,8 @@ class Events extends Component {
                 const nextEvents = that.getNextEvents(data);
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ events: nextEvents, filtered: nextEvents, load: false });
+
+               
             });
     }
 

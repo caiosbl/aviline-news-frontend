@@ -36,6 +36,10 @@ class Categories extends Component {
         this.handlerTitle = this.handlerTitle.bind(this);
     }
 
+    componentDidMount(){
+        document.title = "Portal Aviline - Categorias";
+      }
+
 
     async getCategories(that) {
         try {

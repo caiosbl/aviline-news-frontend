@@ -8,6 +8,9 @@ import CardQuotation from './CardQuotation';
 import CardNextEvents from './CardNextEvents';
 import '../styles/Home.css';
 import AdsHome1 from './Ads/AdsHome1';
+import AdsHome2 from './Ads/AdsHome2';
+import AdsHome3 from './Ads/AdsHome3';
+import AdsHome4 from './Ads/AdsHome4';
 
 
 
@@ -21,6 +24,10 @@ class Home extends Component {
             notFound: false
         };
     }
+
+    componentDidMount(){
+        document.title = "Portal Aviline";
+      }
 
     async getData(that) {
 
@@ -98,13 +105,13 @@ class Home extends Component {
                     <AdsHome1/>
                     </Col>
                     <Col md={3}>
-                    <AdsHome1/>
+                    <AdsHome2/>
                     </Col>
                     <Col md={3}>
-                    <AdsHome1/>
+                    <AdsHome3/>
                     </Col>
                     <Col md={3}>
-                    <AdsHome1/>
+                    <AdsHome4/>
                     </Col>
 
 

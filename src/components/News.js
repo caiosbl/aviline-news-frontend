@@ -25,6 +25,10 @@ class News extends Component {
         };
     }
 
+    componentDidMount(){
+        document.title = "Portal Aviline";
+      }
+
     async getData(slug, that) {
 
         fetch(`http://aviline.herokuapp.com/api/post/slug/${slug}`)
@@ -32,8 +36,13 @@ class News extends Component {
                 return response.json();
             })
             .then(function (res) {
+
+             
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ news: res[0], load: false });
+
+                    const title = res[0].title;
+                    if(title !== undefined) document.title = `Portal Aviline - ${title}`;
             });
 
     }
