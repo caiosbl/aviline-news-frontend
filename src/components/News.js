@@ -40,7 +40,7 @@ class News extends Component {
 
         return (
 
-            <Grid>
+            <Grid style={{marginBottom:100}}>
                 <Row>
                     <Col xs={10} md={10}>  
                     {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}

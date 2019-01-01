@@ -99,7 +99,7 @@ class NewsCard extends Component {
                 color: 'grey'
             }}>{renderHTML(news.content.brief)}</h4>}</Row>
 
-            <Row> {isLoading ? <Spinner /> : this.renderContent(content)}</Row>
+            <Row> {isLoading ? <Spinner />:  <div style={{fontFamily: 'Roboto Condensed, sans-serif'}}>{this.renderContent(content)}</div>}</Row>
 
         </Grid>
 
