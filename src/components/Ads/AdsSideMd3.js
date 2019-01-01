@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image, Row, Col, Grid } from 'react-bootstrap';
 
 
-class AdsSideMd extends Component {
+class AdsSideMd3 extends Component {
 
 
   render() {
@@ -15,4 +15,4 @@ class AdsSideMd extends Component {
     );
   }
 }
-export default AdsSideMd;
+export default AdsSideMd3;

@@ -7,6 +7,8 @@ import AdsSideMd1 from './Ads/AdsSideMd1';
 import AdsSideMd2 from './Ads/AdsSideMd2';
 import AdsSideMd3 from './Ads/AdsSideMd3';
 import AdsSideMd4 from './Ads/AdsSideMd4';
+import AdsSideXs3 from './Ads/AdsSideXs3';
+import AdsSideXs4 from './Ads/AdsSideXs4';
 import { Visible, Hidden } from 'react-grid-system';
 
 class News extends Component {
@@ -61,6 +63,13 @@ class News extends Component {
                     <AdsSideMd4/>
                     </Col>
                     </Hidden>
+
+                    <Visible xs sm> 
+                    <Col  xs={12} sm={12}> 
+                    <AdsSideXs3/>
+                    <AdsSideXs4/>
+                    </Col>
+                    </Visible>
                 </Row>
             </Container>
         );

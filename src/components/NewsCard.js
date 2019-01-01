@@ -5,6 +5,9 @@ import { Badge } from 'reactstrap';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 import Spinner from './Spinner';
 import MaterialIcon from 'material-icons-react';
+import { Visible, Hidden } from 'react-grid-system';
+import AdsSideXs1 from './Ads/AdsSideXs1';
+import AdsSideXs2 from './Ads/AdsSideXs2';
 
 
 class NewsCard extends Component {
@@ -31,33 +34,33 @@ class NewsCard extends Component {
 
     renderContent(htmlElement) {
 
-        
+
 
         if (htmlElement.length === undefined) return htmlElement.props.children.map((element) => {
-          
 
-            if (element.type === undefined )
-                return <p>{element}</p>;
-            else if (element.type === 'img')
-                return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
-            else if (element.type !== 'br') return <p>{element}</p>;
-        });
-
-         else return htmlElement.map((e) => {
-            
-
-            if (e.props !== undefined){
-           
-
-            return e.props.children.map((element) =>{
 
             if (element.type === undefined)
                 return <p>{element}</p>;
             else if (element.type === 'img')
                 return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
             else if (element.type !== 'br') return <p>{element}</p>;
-            });
-        }
+        });
+
+        else return htmlElement.map((e) => {
+
+
+            if (e.props !== undefined) {
+
+
+                return e.props.children.map((element) => {
+
+                    if (element.type === undefined)
+                        return <p>{element}</p>;
+                    else if (element.type === 'img')
+                        return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
+                    else if (element.type !== 'br') return <p>{element}</p>;
+                });
+            }
 
         });
 
@@ -100,13 +103,25 @@ class NewsCard extends Component {
                     {this.renderCategory(news.categories)}
                 </h6>}
             </Row>
+            <Visible xs sm>
+                <Row>
+                    <AdsSideXs1 />
+                </Row>
+            </Visible>
+
 
             <Row>{isLoading ? <Spinner /> : <h4 style={{
                 fontFamily: 'Roboto Condensed',
                 color: 'grey'
             }}>{renderHTML(news.content.brief)}</h4>}</Row>
 
-            <Row> {isLoading ? <Spinner />:  <div style={{fontFamily: 'Roboto Condensed, sans-serif'}}>{this.renderContent(content)}</div>}</Row>
+            <Visible xs sm>
+                <Row>
+                    <AdsSideXs2 />
+                </Row>
+            </Visible>
+
+            <Row> {isLoading ? <Spinner /> : <div style={{ fontFamily: 'Roboto Condensed, sans-serif' }}>{this.renderContent(content)}</div>}</Row>
 
         </Grid>
 
