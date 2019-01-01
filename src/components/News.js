@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import NewsCard from './NewsCard';
 import NotFound from './NotFound';
-import { } from 'react-bootstrap';
-import { Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import AdsSideMd1 from './Ads/AdsSideMd1';
 import AdsSideMd2 from './Ads/AdsSideMd2';
 import AdsSideMd3 from './Ads/AdsSideMd3';
@@ -10,6 +9,7 @@ import AdsSideMd4 from './Ads/AdsSideMd4';
 import AdsSideXs3 from './Ads/AdsSideXs3';
 import AdsSideXs4 from './Ads/AdsSideXs4';
 import { Visible, Hidden } from 'react-grid-system';
+import { FacebookProvider, Comments } from 'react-facebook';
 
 class News extends Component {
 
@@ -48,27 +48,37 @@ class News extends Component {
 
         return (
 
-            <Container style={{marginBottom:100}}>
+            <Container style={{ marginBottom: 100 }}>
                 <Row>
 
-                  
-                    <Col xs={12} md={10}>  
-                    {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
+
+                    <Col xs={12} md={10}>
+                        {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
+
+                    <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545'}}>Comentários</h3>    
+                                      
+                   <FacebookProvider appId="276953129067999" language="pt_BR">
+                        <Comments href={`https://developers.facebook.com/docs/plugins/comments#configurator`} numPosts={5} width={'auto'}/>
+                    </FacebookProvider>
                     </Col>
-                   
-                   <Hidden xs sm> <Col  md={2} > 
-                    <AdsSideMd1/>
-                    <AdsSideMd2/>
-                    <AdsSideMd3/>
-                    <AdsSideMd4/>
+                    
+
+                    <Hidden xs sm> <Col md={2} >
+                        <AdsSideMd1 />
+                        <AdsSideMd2 />
+                        <AdsSideMd3 />
+                        <AdsSideMd4 />
                     </Col>
                     </Hidden>
+      
 
-                    <Visible xs sm> 
-                    <Col  xs={12} sm={12}> 
-                    <AdsSideXs3/>
-                    <AdsSideXs4/>
-                    </Col>
+                    
+
+                    <Visible xs sm>
+                        <Col xs={12} sm={12}>
+                            <AdsSideXs3 />
+                            <AdsSideXs4 />
+                        </Col>
                     </Visible>
                 </Row>
             </Container>
