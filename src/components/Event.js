@@ -13,6 +13,7 @@ import AdsSideMd3 from './Ads/AdsSideMd3';
 import AdsSideMd4 from './Ads/AdsSideMd4';
 import AdsSideXs3 from './Ads/AdsSideXs3';
 import AdsSideXs4 from './Ads/AdsSideXs4';
+import ShareBar from './ShareBar';
 
 class Event extends Component {
 
@@ -78,6 +79,7 @@ class Event extends Component {
                     <Row>
                         <Col xs={12} md={10}>
                             <EventCard data={event} />
+                            <ShareBar/>
 
                             <h3 style={{
                                 fontFamily: 'Roboto Condensed, sans-serif',
@@ -89,6 +91,7 @@ class Event extends Component {
                             <FacebookProvider appId="276953129067999" language="pt_BR">
                                 <Comments href={window.location.href} numPosts={5} width={'auto'} />
                             </FacebookProvider>
+
                             <Visible xs sm>
                                 <Col xs={12} sm={12}>
                                     <AdsSideXs3 />

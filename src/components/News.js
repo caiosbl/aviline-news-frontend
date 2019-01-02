@@ -10,6 +10,7 @@ import AdsSideXs3 from './Ads/AdsSideXs3';
 import AdsSideXs4 from './Ads/AdsSideXs4';
 import { Visible, Hidden } from 'react-grid-system';
 import { FacebookProvider, Comments } from 'react-facebook';
+import ShareBar from './ShareBar';
 
 class News extends Component {
 
@@ -64,6 +65,9 @@ class News extends Component {
                     <Col xs={12} md={10}>
                         {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
 
+
+                    <ShareBar/>    
+
                     <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545'}}>Comentários</h3>    
                                       
                    <FacebookProvider appId="276953129067999" language="pt_BR">
@@ -80,8 +84,6 @@ class News extends Component {
                     </Col>
                     </Hidden>
       
-
-                    
 
                     <Visible xs sm>
                         <Col xs={12} sm={12}>
