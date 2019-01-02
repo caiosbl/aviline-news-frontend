@@ -27,7 +27,9 @@ class Bar extends Component {
     this.state = {
       isOpen: false,
       categories: '',
-      load: true
+      columns: '',
+      load: true,
+      loadColumn: true
     };
   }
 
@@ -46,6 +48,21 @@ class Bar extends Component {
     catch (e) { }
   }
 
+  
+  async getColumns(that) {
+    try {
+      fetch(`http://aviline.herokuapp.com/api/column-author`)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (res) {
+          res.length === 0 ? that.setState({ loadColumn: false }) :
+            that.setState({ columns: res, loadColumn: false});
+        });
+    }
+    catch (e) { }
+  }
+
   toggle() {
     this.setState({ isOpen: !this.state.isOpen });
   }
@@ -57,10 +74,18 @@ class Bar extends Component {
 
   }
 
+  renderColumns(that) {
+
+    return that.state.loadColumn ? <Spinner /> :
+      that.state.columns.map((author) => <a href={`/columns/${author._id}`}><DropdownItem>{`${author.name.first} ${author.name.last}`}</DropdownItem></a>);
+
+  }
+
 
   render() {
 
     this.state.load && this.getCategories(this);
+    this.state.loadColumn && this.getColumns(this);
 
  
     return (
@@ -78,9 +103,14 @@ class Bar extends Component {
                 <Link to="/events" className="Navlink" ><NavLink id='linkNav'>Eventos</NavLink></Link>
               </NavItem>
 
-              <NavItem>
-                <Link to="/columns" className="Navlink"><NavLink id='linkNav'>Colunas</NavLink></Link>
-              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle id='linkNav' nav caret >
+                  Colunas
+              </DropdownToggle>
+                <DropdownMenu right>
+                  {this.renderColumns(this)}
+                </DropdownMenu>
+              </UncontrolledDropdown>
 
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle id='linkNav' nav caret >
