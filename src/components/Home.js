@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
+import {Col as ColR} from 'reactstrap';
 import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
 import Spinner from './Spinner';
@@ -11,6 +12,7 @@ import AdsHome1 from './Ads/AdsHome1';
 import AdsHome2 from './Ads/AdsHome2';
 import AdsHome3 from './Ads/AdsHome3';
 import AdsHome4 from './Ads/AdsHome4';
+import { Visible, Hidden } from 'react-grid-system';
 
 
 
@@ -25,9 +27,9 @@ class Home extends Component {
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.title = "Portal Aviline";
-      }
+    }
 
     async getData(that) {
 
@@ -37,11 +39,11 @@ class Home extends Component {
             })
             .then(function (res) {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
-                that.setState({ data: res, load: false });
+                    that.setState({ data: res, load: false });
             });
 
     }
-    
+
 
     render() {
 
@@ -51,79 +53,108 @@ class Home extends Component {
             <Grid>
 
                 <Row>
-                    <Col md={4} mdPull={4} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={1} data={this.state.data} />}
+                    <Col md={4} mdPull={4} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> :
+                            <CardSpotlightNews position={1} data={this.state.data} />}
                     </Col>
 
-                    <Col md={4} mdPull={6} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={2} data={this.state.data} />}
+                    <Col md={4} mdPull={6} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> :
+                            <CardSpotlightNews position={2} data={this.state.data} />}
                     </Col>
 
-                    <Col md={4} mdPull={4} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> :
-                        <CardSpotlightNews position={3} data={this.state.data} />}
+                    <Col md={4} mdPull={4} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> :
+                            <CardSpotlightNews position={3} data={this.state.data} />}
                     </Col>
                 </Row>
 
                 <Row>
 
-                <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                {this.state.load || this.state.notFound ? <Spinner /> :
-                        <div><CardSecondaryNews position={1} data={this.state.data} />
-                        <CardSecondaryNews position={2} data={this.state.data} /></div>}
+                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> :
+                            <div><CardSecondaryNews position={1} data={this.state.data} />
+                                <CardSecondaryNews position={2} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                        <CardSecondaryNews position={2} data={this.state.data}/>
-                        <CardSecondaryNews position={1} data={this.state.data}/></div>}
+                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> : <div>
+                            <CardSecondaryNews position={2} data={this.state.data} />
+                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                        <CardSecondaryNews position={3} data={this.state.data}/>
-                        <CardSecondaryNews position={1} data={this.state.data}/></div>}
+                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> : <div>
+                            <CardSecondaryNews position={3} data={this.state.data} />
+                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{marginBottom: 10}}>
-                    {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                        <CardSecondaryNews position={4} data={this.state.data}/>
-                        <CardSecondaryNews position={1} data={this.state.data}/></div>}
+                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                        {this.state.load || this.state.notFound ? <Spinner /> : <div>
+                            <CardSecondaryNews position={4} data={this.state.data} />
+                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={4} mdPull={2} style={{marginBottom: 10}}>
-                        <CardNextEvents/>    
+                    <Col md={4} mdPull={2} style={{ marginBottom: 10 }}>
+                        <CardNextEvents />
                     </Col>
-                   
-    
+
+
                 </Row>
 
-                <Row style={{marginTop: 2}}>
+                <Row style={{ marginTop: 2 }}>
 
-                    <Col md={8} mdPull={4} style={{marginBottom: 40}}>
-                    <Row>
+                    <Col md={8} mdPull={4} style={{ marginBottom: 40 }}>
 
-                    <Col md={3} >
-                    <AdsHome1/>
-                    </Col>
-                    <Col md={3}>
-                    <AdsHome2/>
-                    </Col>
-                    <Col md={3}>
-                    <AdsHome3/>
-                    </Col>
-                    <Col md={3}>
-                    <AdsHome4/>
-                    </Col>
+                        <Hidden xs sm>
+                        <Grid>
+                            <Row>
+
+                                <Col md={3} >
+                                    <AdsHome1 />
+                                </Col>
+                                <Col md={3}>
+                                    <AdsHome2 />
+                                </Col>
+                                <Col md={3}>
+                                    <AdsHome3 />
+                                </Col>
+                                <Col md={3}>
+                                    <AdsHome4 />
+                                </Col>
+                            </Row>
+                            </Grid>
+
+                        </Hidden>
+
+                        <Visible xs sm>
+                        <Grid >
+                            <Row style={{marginLeft:2}}>
+                                <ColR sm={6} xs={6}>
+                                    <AdsHome1 />
+                                </ColR>
+                                <ColR sm={6} xs={6}>
+                                    <AdsHome2 />
+                                </ColR>
+                            </Row>
+                            <Row style={{marginLeft:2}}>
+                                <ColR sm={6} xs={6}>
+                                    <AdsHome3 />
+                                </ColR>
+                                <ColR sm={6} xs={6}>
+                                    <AdsHome4 />
+                                </ColR>
+                            </Row>
+                            </Grid>
+                        </Visible>
 
 
-                    </Row>
-                    <Row>
-                    {this.state.load || this.state.notFound ? <Spinner /> : 
-                    <LatestNews data={this.state.data} />}
-                    </Row>
+                        <Row>
+                            <Grid>
+                            {this.state.load || this.state.notFound ? <Spinner /> :
+                                <LatestNews data={this.state.data} />}
+                                </Grid>
+                        </Row>
                     </Col>
 
-                    <Col md={4} mdPull={2} style={{marginBottom: 10}}>
-                        <CardQuotation/>    
+                    <Col md={4} mdPull={2} style={{ marginBottom: 10 }}>
+                        <CardQuotation />
                     </Col>
 
                 </Row>
