@@ -47,33 +47,30 @@ class CardQuotation extends Component {
 
     async getDolarQuotation(that) {
 
-        var date = that.getDate(new Date());
+        var startDate_ = new Date();
+        startDate_.setDate(startDate_.getDate() - 4);
+        const startDate = that.getDate(startDate_);
+        const finalDate = that.getDate(new Date());
 
         try {
 
             request();
 
             function request() {
-                fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='${date}'&$top=100&$format=json`)
+                fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='${startDate}'&@dataFinalCotacao='${finalDate}'&$top=100&$skip=0&$format=json&$select=cotacaoCompra,cotacaoVenda`)
                     .then(function (response) {
-                        return response.json();
+                      console.log(response);
+                        return response.json() ;
                     })
                     .then(function (res) {
 
+                        const index = res.value.length - 1;
 
-                        if (res.value.length === 0) {
-                            var newDate = new Date(date);
-                            newDate.setDate(newDate.getDate() - 1);
-                            date = that.getDate(newDate);
-                            request();
-                        }
-
-                        else {
-                            const dolarBuy = res.value[0].cotacaoCompra;
-                            const dolarSell = res.value[0].cotacaoVenda;
+                            const dolarBuy = res.value[index].cotacaoCompra;
+                            const dolarSell = res.value[index].cotacaoVenda;
                             that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
                         }
-                    });
+                    );
 
             }
 
@@ -197,7 +194,7 @@ class CardQuotation extends Component {
 
                                     <Badge color='danger' style={{ marginTop: 5 }}>
                                         <h6 style={{ padding: 5 }}>Compra</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarBuy.toFixed(3)}</h4>
+                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarBuy.toFixed(4)}</h4>
 
                                     </Badge>
 
@@ -207,7 +204,7 @@ class CardQuotation extends Component {
 
                                     <Badge color='danger' style={{ marginTop: 5 }}>
                                         <h6 style={{ padding: 5 }}>Venda</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarSell.toFixed(3)}</h4>
+                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarSell.toFixed(4)}</h4>
 
                                     </Badge>
 
