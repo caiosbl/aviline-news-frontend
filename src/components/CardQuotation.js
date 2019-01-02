@@ -48,7 +48,7 @@ class CardQuotation extends Component {
     async getDolarQuotation(that) {
 
         var startDate_ = new Date();
-        startDate_.setDate(startDate_.getDate() - 4);
+        startDate_.setDate(startDate_.getDate() - 7);
         const startDate = that.getDate(startDate_);
         const finalDate = that.getDate(new Date());
 
