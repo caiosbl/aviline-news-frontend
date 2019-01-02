@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import '../styles/ShareBar.css';
-
-// import icons
-
 import { FaLinkedin, FaTwitter, FaEnvelope, FaGooglePlus, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { ShareButtonRectangle, ShareBlockStandard } from 'react-custom-share';
 
@@ -30,7 +26,6 @@ const ShareComponent = props => {
 class ShareBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { addThisLoaded: false }
 
   }
 
