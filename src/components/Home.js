@@ -71,27 +71,27 @@ class Home extends Component {
 
                 <Row>
 
-                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                    <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> :
                             <div><CardSecondaryNews position={1} data={this.state.data} />
                                 <CardSecondaryNews position={2} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                    <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
                             <CardSecondaryNews position={2} data={this.state.data} />
                             <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                    <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
                             <CardSecondaryNews position={3} data={this.state.data} />
                             <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={2} mdPull={2} style={{ marginBottom: 10 }}>
+                    <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
                             <CardSecondaryNews position={4} data={this.state.data} />
                             <CardSecondaryNews position={1} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={4} mdPull={2} style={{ marginBottom: 10 }}>
+                    <Col md={4} mdPull={2} style={{ marginBottom: 3 }}>
                         <CardNextEvents />
                     </Col>
 

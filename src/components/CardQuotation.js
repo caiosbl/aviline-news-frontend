@@ -8,7 +8,7 @@ import renderHTML from 'react-render-html';
 
 
 const HeaderQuotationStyle = {
-    width: 300,
+    width: 'auto',
     color: '#dc3545',
     borderBottom: '3px solid #dc3545',
     marginTop: 3
@@ -186,7 +186,8 @@ class CardQuotation extends Component {
                     <Grid>
 
                         <Row style={HeaderQuotationStyle}>
-                            <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Dólar(PTAX)</b></span> <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
+                            <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Dólar(PTAX)</b></span> 
+                            <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
                         </Row>
 
                         {loadDolar ? <Spinner /> :
