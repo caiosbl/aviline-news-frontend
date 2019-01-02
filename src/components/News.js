@@ -26,9 +26,9 @@ class News extends Component {
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.title = "Portal Aviline";
-      }
+    }
 
     async getData(slug, that) {
 
@@ -38,12 +38,12 @@ class News extends Component {
             })
             .then(function (res) {
 
-             
+
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ news: res[0], load: false });
 
-                    const title = res[0].title;
-                    if(title !== undefined) document.title = `Portal Aviline - ${title}`;
+                const title = res[0].title;
+                if (title !== undefined) document.title = `Portal Aviline - ${title}`;
             });
 
     }
@@ -66,15 +66,15 @@ class News extends Component {
                         {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
 
 
-                    <ShareBar/>    
+                        {this.state.news !== undefined && <ShareBar url={window.location.href} title={`${news.title} - Portal Aviline`} />}
 
-                    <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545'}}>Comentários</h3>    
-                                      
-                   <FacebookProvider appId="276953129067999" language="pt_BR">
-                        <Comments href={window.location.href} numPosts={5} width={'auto'}/>
-                    </FacebookProvider>
+                        <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545' }}>Comentários</h3>
+
+                        <FacebookProvider appId="276953129067999" language="pt_BR">
+                            <Comments href={window.location.href} numPosts={5} width={'auto'} />
+                        </FacebookProvider>
                     </Col>
-                    
+
 
                     <Hidden xs sm> <Col md={2} >
                         <AdsSideMd1 />
@@ -83,7 +83,7 @@ class News extends Component {
                         <AdsSideMd4 />
                     </Col>
                     </Hidden>
-      
+
 
                     <Visible xs sm>
                         <Col xs={12} sm={12}>

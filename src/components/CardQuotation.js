@@ -59,7 +59,6 @@ class CardQuotation extends Component {
             function request() {
                 fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='${startDate}'&@dataFinalCotacao='${finalDate}'&$top=100&$skip=0&$format=json&$select=cotacaoCompra,cotacaoVenda`)
                     .then(function (response) {
-                      console.log(response);
                         return response.json() ;
                     })
                     .then(function (res) {

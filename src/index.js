@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Event from './components/Event';
 import Events from './components/Events';
 import Categories from './components/Categories';
+import AdsModal from './components/Ads/AdsModal';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -19,6 +20,7 @@ const routing = (
     <Router>
 
         <div>
+            <AdsModal/>
             <Bar/> 
             <AdsTop/>
             <Switch>
