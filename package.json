@@ -8,6 +8,7 @@
     "moment": "^2.23.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
+    "react-custom-share": "^0.4.8",
     "react-dom": "^16.4.2",
     "react-facebook": "^6.0.15",
     "react-grid-system": "^4.3.1",
