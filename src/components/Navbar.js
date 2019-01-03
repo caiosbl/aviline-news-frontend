@@ -28,7 +28,7 @@ class Bar extends Component {
       isOpen: false,
       categories: '',
       columns: '',
-      load: true,
+      loadCategories: true,
       loadColumn: true
     };
   }
@@ -41,8 +41,8 @@ class Bar extends Component {
           return response.json();
         })
         .then(function (res) {
-          res.length === 0 ? that.setState({ load: false }) :
-            that.setState({ categories: res, load: false});
+          res.length === 0 ? that.setState({ loadCategories: false }) :
+            that.setState({ categories: res, loadCategories: false});
         });
     }
     catch (e) { }
@@ -68,23 +68,19 @@ class Bar extends Component {
   }
 
   renderCategories(that) {
-
-    return that.state.load ? <Spinner /> :
+    return that.state.loadCategories ? <Spinner /> :
       that.state.categories.map((category) => <a href={`/categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></a>);
-
   }
 
   renderColumns(that) {
-
     return that.state.loadColumn ? <Spinner /> :
-      that.state.columns.map((author) => <a href={`/columns/${author._id}`}><DropdownItem>{`${author.name.first} ${author.name.last}`}</DropdownItem></a>);
-
+      that.state.columns.map((author) => <a href={`/columns/${author.slug}`}><DropdownItem>{`${author.name}`}</DropdownItem></a>);
   }
 
 
   render() {
 
-    this.state.load && this.getCategories(this);
+    this.state.loadCategories && this.getCategories(this);
     this.state.loadColumn && this.getColumns(this);
 
  
