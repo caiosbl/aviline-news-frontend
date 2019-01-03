@@ -2,7 +2,7 @@
     "root": "build/",
     "clean_urls": false,
     "routes": {
-	"/.well-known/acme-challenge/5h023mrefql31Ldl5QgAUGpO4rELlAoqL92XTmE8ruc" : "file"
+	"/.well-known/acme-challenge/5h023mrefql31Ldl5QgAUGpO4rELlAoqL92XTmE8ruc" : "file.txt"
       "/**": "index.html",
       "https_only": true
     }
