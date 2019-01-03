@@ -77,7 +77,7 @@ class ColumnItem extends Component {
 
                         <Row>
                             <Col xs={12} md={12}>
-                                <Link to={`/post/${post.slug}`}>
+                                <Link to={`/column/${post.slug}`}>
                                     <Button color="danger"
                                         style={{
                                             fontFamily: 'Roboto Condensed, sans-serif',

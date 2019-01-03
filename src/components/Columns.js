@@ -4,7 +4,7 @@ import NotFound from './NotFound';
 import Spinner from './Spinner';
 import { Grid, Col, Row, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, Button, Container, Col as ColR, Row as RowR } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, Container, Col as ColR, Row as RowR } from 'reactstrap';
 import MaterialIcon from 'material-icons-react';
 import { Visible, Hidden } from 'react-grid-system';
 import StickyBox from "react-sticky-box/dist/esnext";
@@ -44,6 +44,7 @@ class Columns extends Component {
             .then(function (res) {
                 res.length === 0 ? that.setState({ notFound: true, loadAuthor: false }) :
                     that.setState({ author: res[0], loadAuthor: false });
+                    document.title = `Portal Aviline - Coluna do ${res[0].name}`
             });
     }
 
@@ -98,11 +99,15 @@ class Columns extends Component {
         );
     }
 
-    getBreadcrumb() {
+    getBreadcrumb(that) {
+
+        const author = that.state.author.name;
         return (
             <Breadcrumb>
                 <BreadcrumbItem><Link to='/'>Home</Link></BreadcrumbItem>
-                <BreadcrumbItem active>Colunas</BreadcrumbItem>
+                <BreadcrumbItem >Colunas</BreadcrumbItem>
+                <BreadcrumbItem active >Coluna do {author}</BreadcrumbItem>
+
             </Breadcrumb>
         );
     }
@@ -179,7 +184,7 @@ class Columns extends Component {
 
                         <Row>
                             <Col xs={12} md={12} >
-                                {this.getBreadcrumb()}
+                                {this.getBreadcrumb(this)}
                                 {this.getHeader(this)}
                             </Col>
                         </Row>
