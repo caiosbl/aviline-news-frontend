@@ -11,9 +11,6 @@ import 'moment/locale/pt-br';
 
 class NewsItem extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     renderCategory(categorieList) {
         return categorieList.map((categorie) => {

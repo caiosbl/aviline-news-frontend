@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import renderHTML from 'react-render-html';
 import { Badge } from 'reactstrap';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Grid, Row,Image } from 'react-bootstrap';
 import Spinner from './Spinner';
 import MaterialIcon from 'material-icons-react';
-import { Visible, Hidden } from 'react-grid-system';
+import { Visible} from 'react-grid-system';
 import AdsSideXs1 from './Ads/AdsSideXs1';
 import AdsSideXs2 from './Ads/AdsSideXs2';
 
@@ -70,9 +70,6 @@ class NewsCard extends Component {
 
         const isLoading = this.props.data === "";
         const news = isLoading ? " " : this.props.data;
-        const author = isLoading ? " " : news.author.name;
-        const categories = isLoading ? " " : news.categories;
-        const authorName = isLoading ? " " : author.first + ' ' + author.last;
         const content = isLoading ? " " : renderHTML(news.content.extended);
 
 

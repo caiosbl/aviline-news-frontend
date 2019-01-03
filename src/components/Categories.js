@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import EventItem from './EventItem';
 import NotFound from './NotFound';
 import Spinner from './Spinner';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { Link,Redirect } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, Button } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label } from 'reactstrap';
 import MaterialIcon from 'material-icons-react';
 import StickyBox from "react-sticky-box/dist/esnext";
 import NewsItem from './NewsItem';
@@ -48,8 +47,6 @@ class Categories extends Component {
                     return response.json();
                 })
                 .then(function (res) {
-                    const category = that.props.match.params.id;
-                    const categoryState = that.state.category;
 
                     res.length === 0 ? that.setState({ notFound: true, loadCategory: false }) :
                         that.setState({ categories: res, loadCategory: false});
@@ -174,13 +171,12 @@ class Categories extends Component {
         const load = this.state.loadPost || this.state.loadCategory;
         const category = this.props.match.params.id;
         const flagRouteId = this.state.flagRouteId;
-        const flagFirstFilter = this.state.flagFirstFilter;
+       
 
        !load && !flagRouteId && !this.state.redirect && category !== undefined && 
        this.filterByCategory(category,this);
        
-       //!load  && !flagFirstFilter && category === undefined && 
-       //this.filterByCategory(this.state.category,this);
+   
 
         return (
             <Grid>

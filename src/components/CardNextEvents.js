@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardBody, Badge, CardHeader, CardText, Table } from 'reactstrap';
-import { Row, Grid, Col } from 'react-bootstrap';
+import { Card, CardBody, Badge, CardHeader,Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
@@ -9,13 +8,6 @@ import Moment from 'react-moment';
 import 'moment/locale/pt-br';
 
 
-
-const HeaderQuotationStyle = {
-    width: 300,
-    color: 'red',
-    borderBottom: '3px solid red',
-    marginTop: 3
-};
 
 
 class CardNextEvents extends Component {
@@ -35,7 +27,7 @@ class CardNextEvents extends Component {
         var cont = 0;
         var nextDates = [];
 
-        data.map((event) => {
+        data.forEach((event) => {
             const dateStartEvent = new Date(event.dateStart);
             var dateEndEvent = new Date(event.dateFinish);
             dateEndEvent.setHours(23, 59, 59);

@@ -24,10 +24,7 @@ const ShareComponent = props => {
 };
 
 class ShareBar extends Component {
-  constructor(props) {
-    super(props);
-
-  }
+ 
 
   render() {
 

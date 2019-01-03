@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import Moment from 'react-moment';
 import renderHTML from 'react-render-html';
 import { Badge } from 'reactstrap';
-import { Grid, Row, Col,Image } from 'react-bootstrap';
+import { Grid, Row,Image } from 'react-bootstrap';
 import MaterialIcon from 'material-icons-react';
-import { Visible, Hidden } from 'react-grid-system';
+import { Visible} from 'react-grid-system';
 import AdsSideXs1 from './Ads/AdsSideXs1';
 import AdsSideXs2 from './Ads/AdsSideXs2';
-import AdsSideXs3 from './Ads/AdsSideXs3';
-import AdsSideXs4 from './Ads/AdsSideXs4';
+
 
 import Spinner from './Spinner';
 

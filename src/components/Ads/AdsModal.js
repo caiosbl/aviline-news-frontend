@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Row, Col, Grid } from 'react-bootstrap';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
+import { Image} from 'react-bootstrap';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 
 
 

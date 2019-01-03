@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Col, Image, Row } from 'react-bootstrap';
-import { Card, CardHeader, CardFooter, CardBody, Button } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 import Moment from 'react-moment';
@@ -10,17 +10,11 @@ import 'moment/locale/pt-br';
 
 class EventItem extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-
 
     render() {
 
         const event = this.props.event;
         const hasImage = event.image !== undefined;
-        const mdDataCol = hasImage ? 8 : 12;
 
         return (
             <Card style={{ margin: 20 }}>

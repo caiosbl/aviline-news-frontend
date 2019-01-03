@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'react-bootstrap';
-import {Row,Col,Container} from 'reactstrap';
+import {Row,Container} from 'reactstrap';
 
 class AdsSideXs2 extends Component {
 

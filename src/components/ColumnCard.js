@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import renderHTML from 'react-render-html';
-import { Badge } from 'reactstrap';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Grid, Row,  Image } from 'react-bootstrap';
 import Spinner from './Spinner';
 import MaterialIcon from 'material-icons-react';
-import { Visible, Hidden } from 'react-grid-system';
-import AdsSideXs1 from './Ads/AdsSideXs1';
-import AdsSideXs2 from './Ads/AdsSideXs2';
+
 
 
 class ColumnCard extends Component {
@@ -30,8 +27,6 @@ class ColumnCard extends Component {
 
 
         if (htmlElement.length === undefined) return htmlElement.props.children.map((element) => {
-
-
             if (element.type === undefined)
                 return <p>{element}</p>;
             else if (element.type === 'img')
@@ -43,8 +38,6 @@ class ColumnCard extends Component {
 
 
             if (e.props !== undefined) {
-
-
                 return e.props.children.map((element) => {
 
                     if (element.type === undefined)

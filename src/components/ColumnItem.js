@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Col, Image, Row } from 'react-bootstrap';
-import { Card, CardHeader, CardBody, Button, Badge } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 import Moment from 'react-moment';
@@ -11,10 +11,7 @@ import 'moment/locale/pt-br';
 
 class ColumnItem extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
+ 
 
 
     render() {

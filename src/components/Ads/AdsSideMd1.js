@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Row, Col, Grid } from 'react-bootstrap';
+import { Image, Row} from 'react-bootstrap';
 
 
 class AdsSideMd extends Component {
