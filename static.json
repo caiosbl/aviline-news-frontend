@@ -3,5 +3,6 @@
     "clean_urls": false,
     "routes": {
       "/**": "file.txt"
-    }
+    },
+    "https_only": true
   }
