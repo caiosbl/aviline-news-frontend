@@ -15,6 +15,7 @@ import AdsModal from './components/Ads/AdsModal';
 import Columns from './components/Columns';
 import Column from './components/Column';
 import * as serviceWorker from './serviceWorker';
+import HttpsRedirect from 'react-https-redirect';
 
 
 const routing = (
@@ -25,6 +26,7 @@ const routing = (
             <AdsModal/>
             <Bar/> 
             <AdsTop/>
+            <HttpsRedirect>
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />
@@ -38,6 +40,7 @@ const routing = (
                 <Route path="*" component={Home} />
               
             </Switch>
+            </HttpsRedirect>
 
             <Footer/>
         </div>
