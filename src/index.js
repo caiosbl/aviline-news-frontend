@@ -12,6 +12,7 @@ import Event from './components/Event';
 import Events from './components/Events';
 import Categories from './components/Categories';
 import AdsModal from './components/Ads/AdsModal';
+import Columns from './components/Columns';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -30,6 +31,7 @@ const routing = (
                 <Route exact path="/events" component={Events} />
                 <Route exact path="/categories/:id" component={Categories} />
                 <Route exact path="/categories" component={Categories} />
+                <Route exact path="/columns/:id" component={Columns} />
               
                 <Route path="*" component={Home} />
               
