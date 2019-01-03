@@ -143,7 +143,7 @@ class Columns extends Component {
                     }}>
                         <RowR>
                             <ColR md={2} sm={6} xs={6}>
-                                <Image src={author.image.url} style={{ width: '80%', height: '120px', borderRadius: '50%' }} />
+                                <Image src={author.image.secure_url} style={{ width: '80%', height: '120px', borderRadius: '50%' }} />
                             </ColR>
                             <ColR md={10} sm={6} xs={6}>
                                 <Visible xs sm>

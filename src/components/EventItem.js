@@ -78,7 +78,7 @@ class EventItem extends Component {
 
                             {hasImage && <Col xs={6} xsOffset={4} >
 
-                                <Image src={event.image.url} thumbnail />
+                                <Image src={event.image.secure_url} thumbnail />
 
                             </Col>
 

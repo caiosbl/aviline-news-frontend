@@ -43,7 +43,7 @@ class CardSpotlightNews extends Component {
                 <Link to={"/news/" + data.slug} id="link">
                     <Card inverse id="Card">
                     {data.image !== undefined ?
-                        <CardImg width="100%" height="220" src={data.image.url}
+                        <CardImg width="100%" height="220" src={data.image.secure_url}
                             alt="Card image cap" style={{ opacity: 0.5 }} />
                         
                         : <CardImg width="100%" height="220" src={"https://res.cloudinary.com/aviline/image/upload/v1546358108/avicultura.jpg"}

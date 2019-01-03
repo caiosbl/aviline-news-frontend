@@ -65,7 +65,7 @@ class ColumnItem extends Component {
                         <Row>
                             {hasImage &&
                                 <Col xs={6} md={4} >
-                                    <Image src={post.image.url} thumbnail />
+                                    <Image src={post.image.secure_url} thumbnail />
                                 </Col>}
 
                             <Col xs={12} md={mdDataCol} >
