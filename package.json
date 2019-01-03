@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "emotion": "^10.0.5",
     "material-icons-react": "^1.0.4",
     "moment": "^2.23.0",
     "react": "^16.7.0",
