@@ -37,7 +37,7 @@ class Columns extends Component {
 
     async getAuthorData(that) {
         const author = that.props.match.params.id;
-        fetch(`https://admin.aviline.com.br/api/column-author/${author}`)
+        fetch(`https://aviline.herokuapp.com/api/column-author/${author}`)
             .then(function (response) {
                 return response.json();
             })
