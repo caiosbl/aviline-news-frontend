@@ -36,7 +36,7 @@ class Bar extends Component {
 
   async getCategories(that) {
     try {
-      fetch(`http://aviline.herokuapp.com/api/category`)
+      fetch(`https://aviline.herokuapp.com/api/category`)
         .then(function (response) {
           return response.json();
         })
@@ -51,7 +51,7 @@ class Bar extends Component {
   
   async getColumns(that) {
     try {
-      fetch(`http://aviline.herokuapp.com/api/column-author`)
+      fetch(`https://aviline.herokuapp.com/api/column-author`)
         .then(function (response) {
           return response.json();
         })

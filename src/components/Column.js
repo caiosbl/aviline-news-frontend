@@ -39,7 +39,7 @@ class Column extends Component {
 
     async getData(slug, that) {
 
-        fetch(`http://aviline.herokuapp.com/api/column/${slug}`)
+        fetch(`https://aviline.herokuapp.com/api/column/${slug}`)
             .then(function (response) {
                 return response.json();
             })

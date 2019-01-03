@@ -53,7 +53,7 @@ class Events extends Component {
     }
 
     async getData(that) {
-        fetch(`http://aviline.herokuapp.com/api/event`)
+        fetch(`https://aviline.herokuapp.com/api/event`)
             .then(function (response) {
                 return response.json();
             })

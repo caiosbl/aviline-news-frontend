@@ -43,7 +43,7 @@ class Categories extends Component {
 
     async getCategories(that) {
         try {
-            fetch(`http://aviline.herokuapp.com/api/category`)
+            fetch(`https://aviline.herokuapp.com/api/category`)
                 .then(function (response) {
                     return response.json();
                 })
@@ -62,7 +62,7 @@ class Categories extends Component {
     async getPosts(that) {
 
         try {
-            fetch(`http://aviline.herokuapp.com/api/post`)
+            fetch(`https://aviline.herokuapp.com/api/post`)
                 .then(function (response) {
                     return response.json();
                 })

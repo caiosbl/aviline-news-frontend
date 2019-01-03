@@ -32,7 +32,7 @@ class News extends Component {
 
     async getData(slug, that) {
 
-        fetch(`http://aviline.herokuapp.com/api/post/slug/${slug}`)
+        fetch(`https://aviline.herokuapp.com/api/post/slug/${slug}`)
             .then(function (response) {
                 return response.json();
             })
