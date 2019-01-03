@@ -73,23 +73,23 @@ class Home extends Component {
 
                     <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> :
-                            <div><CardSecondaryNews position={1} data={this.state.data} />
-                                <CardSecondaryNews position={2} data={this.state.data} /></div>}
+                            <div><CardSecondaryNews position={4} data={this.state.data} />
+                                <CardSecondaryNews position={5} data={this.state.data} /></div>}
                     </Col>
                     <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                            <CardSecondaryNews position={2} data={this.state.data} />
-                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
+                            <CardSecondaryNews position={6} data={this.state.data} />
+                            <CardSecondaryNews position={7} data={this.state.data} /></div>}
                     </Col>
                     <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                            <CardSecondaryNews position={3} data={this.state.data} />
-                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
+                            <CardSecondaryNews position={8} data={this.state.data} />
+                            <CardSecondaryNews position={9} data={this.state.data} /></div>}
                     </Col>
                     <Col md={2} mdPull={2} style={{ marginBottom: 3 }}>
                         {this.state.load || this.state.notFound ? <Spinner /> : <div>
-                            <CardSecondaryNews position={4} data={this.state.data} />
-                            <CardSecondaryNews position={1} data={this.state.data} /></div>}
+                            <CardSecondaryNews position={10} data={this.state.data} />
+                            <CardSecondaryNews position={11} data={this.state.data} /></div>}
                     </Col>
                     <Col md={4} mdPull={2} style={{ marginBottom: 3 }}>
                         <CardNextEvents />
