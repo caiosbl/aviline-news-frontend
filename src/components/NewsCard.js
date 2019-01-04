@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import renderHTML from 'react-render-html';
-import { Badge } from 'reactstrap';
-import { Grid, Row,Image } from 'react-bootstrap';
+import { Badge, Container, Row, Col } from 'reactstrap';
+import { Image } from 'react-bootstrap';
 import Spinner from './Spinner';
 import MaterialIcon from 'material-icons-react';
-import { Visible} from 'react-grid-system';
+import { Visible } from 'react-grid-system';
 import AdsSideXs1 from './Ads/AdsSideXs1';
 import AdsSideXs2 from './Ads/AdsSideXs2';
 
@@ -57,7 +57,7 @@ class NewsCard extends Component {
                     if (element.type === undefined)
                         return <p>{element}</p>;
                     else if (element.type === 'img')
-                        return <Image src={element.props.src} style={{ maxWidth: '100%' }} />;
+                        return <Image src={element.props.src} style={{ maxWidth: '80%' }} />;
                     else if (element.type !== 'br') return <p>{element}</p>;
                 });
             }
@@ -74,7 +74,7 @@ class NewsCard extends Component {
 
 
 
-        return (<Grid>
+        return (<Container>
 
             <Row>
                 <h1>{isLoading ? <Spinner /> : news.title}</h1>
@@ -107,10 +107,18 @@ class NewsCard extends Component {
             </Visible>
 
 
-            <Row>{isLoading ? <Spinner /> : <h4 style={{
-                fontFamily: 'Roboto Condensed',
-                color: 'grey'
-            }}>{renderHTML(news.content.brief)}</h4>}</Row>
+            <Row>
+
+                <Col xs={12} sm={12} md={12}>
+
+                    {isLoading ? <Spinner /> : <h4 style={{
+                        fontFamily: 'Roboto Condensed',
+                        color: 'grey'
+                    }}>{renderHTML(news.content.brief)}</h4>}
+
+                </Col>
+
+            </Row>
 
             <Visible xs sm>
                 <Row>
@@ -118,9 +126,13 @@ class NewsCard extends Component {
                 </Row>
             </Visible>
 
-            <Row> {isLoading ? <Spinner /> : <div style={{ fontFamily: 'Roboto Condensed, sans-serif' }}>{this.renderContent(content)}</div>}</Row>
+            <Row>    <Col xs={12} sm={12} md={12}> {isLoading ? <Spinner /> : 
+            <div style={{ fontFamily: 'Roboto Condensed, sans-serif' }}>{this.renderContent(content)}</div>}
+            </Col>
+            </Row>
 
-        </Grid>
+
+        </Container>
 
         );
     }
