@@ -87,7 +87,7 @@ class Bar extends Component {
     return (
       <div>
         <Navbar color="danger" dark expand="md">
-          <NavbarBrand><Image src="/logo.png" id='logo' /></NavbarBrand>
+          <NavbarBrand><Image src="/logo.png" id='logo' style={{boxShadow:'2px 2px 18px black'}} /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
