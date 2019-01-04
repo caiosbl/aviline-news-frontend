@@ -43,7 +43,7 @@ class Event extends Component {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ event: res[0], load: false });
 
-                const title = res[0].title;
+                const title = res[0].title !== undefined ? res[0].title : "";
                 if (title !== undefined) document.title = `Portal Aviline - ${title}`;
             });
 
