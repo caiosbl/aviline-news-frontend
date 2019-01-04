@@ -47,8 +47,8 @@ class Column extends Component {
                 res.length === 0 ? that.setState({ notFound: true, load: false }) :
                     that.setState({ post: res[0], load: false });
 
-                const title = res[0].title;
-                const author = res[0].name;
+                const title = res[0].title !== undefined ? res[0].title : "";
+                const author = res[0].name !== undefined ? res[0].name : "";
                 if (title !== undefined) document.title = `Portal Aviline - ${title} - Coluna do ${author}`;
             });
 
