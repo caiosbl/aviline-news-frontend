@@ -26,7 +26,7 @@ const routing = (
             <AdsModal/>
             <Bar/> 
             <AdsTop/>
-            <HttpsRedirect>
+       
             <Switch>
                 
                 <Route exact path="/news/:id" component={News} />
@@ -40,7 +40,7 @@ const routing = (
                 <Route path="*" component={Home} />
               
             </Switch>
-            </HttpsRedirect>
+           
 
             <Footer/>
         </div>
