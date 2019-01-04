@@ -28,7 +28,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        document.title = "Portal Aviline";
+        document.title = "Portal Aviline - O Portal Online da Avicultura!";
     }
 
     async getData(that) {
