@@ -13,6 +13,7 @@
     "react-custom-share": "^0.4.8",
     "react-dom": "^16.4.2",
     "react-facebook": "^6.0.15",
+    "react-ga": "^2.5.6",
     "react-grid-system": "^4.3.1",
     "react-https-redirect": "^1.0.11",
     "react-icons": "^3.2.2",

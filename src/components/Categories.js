@@ -7,6 +7,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label } 
 import MaterialIcon from 'material-icons-react';
 import StickyBox from "react-sticky-box/dist/esnext";
 import NewsItem from './NewsItem';
+import ReactGA from 'react-ga';
 
 
 
@@ -161,10 +162,15 @@ class Categories extends Component {
             ;
     }
 
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
+
     render() {
 
-       
-
+        this.initializeGA();
         this.state.loadPost && this.getPosts(this);
         this.state.loadCategory && this.getCategories(this);
 

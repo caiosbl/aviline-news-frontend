@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label} from 'reactstrap';
 import MaterialIcon from 'material-icons-react';
 import StickyBox from "react-sticky-box/dist/esnext";
+import ReactGA from 'react-ga';
 
 
 class Events extends Component {
@@ -179,9 +180,18 @@ class Events extends Component {
         ;
     }
 
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
+
 
 
     render() {
+
+        this.initializeGA();
+
         this.state.load && this.getData(this);
         const events = this.state.filtered;
 

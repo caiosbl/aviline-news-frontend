@@ -8,6 +8,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardHeader, CardBody, Input, Label, C
 import MaterialIcon from 'material-icons-react';
 import { Visible, Hidden } from 'react-grid-system';
 import StickyBox from "react-sticky-box/dist/esnext";
+import ReactGA from 'react-ga';
 
 
 
@@ -168,9 +169,15 @@ class Columns extends Component {
         );
     }
 
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
 
 
     render() {
+        this.initializeGA();
         this.state.load && this.getData(this);
         this.state.loadAuthor && this.getAuthorData(this);
         const posts = this.state.filtered;

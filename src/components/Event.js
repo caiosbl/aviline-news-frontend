@@ -14,6 +14,7 @@ import AdsSideMd4 from './Ads/AdsSideMd4';
 import AdsSideXs3 from './Ads/AdsSideXs3';
 import AdsSideXs4 from './Ads/AdsSideXs4';
 import ShareBar from './ShareBar';
+import ReactGA from 'react-ga';
 
 class Event extends Component {
 
@@ -61,7 +62,14 @@ class Event extends Component {
         );
     }
 
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     render() {
+
+        this.initializeGA();
 
         this.state.load &&
             this.getData(this.state.slug, this);

@@ -5,6 +5,7 @@ import { Container, Row, Col,Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { FacebookProvider, Comments } from 'react-facebook';
 import ShareBar from './ShareBar';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 class Column extends Component {
 
@@ -54,11 +55,14 @@ class Column extends Component {
 
     }
 
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     render() {
-
-        this.state.load &&
-            this.getData(this.state.slug, this);
-
+        this.initializeGA();
+        this.state.load && this.getData(this.state.slug, this);
         const post = this.state.post;
 
 

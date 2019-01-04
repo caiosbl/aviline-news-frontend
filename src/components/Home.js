@@ -13,6 +13,7 @@ import AdsHome2 from './Ads/AdsHome2';
 import AdsHome3 from './Ads/AdsHome3';
 import AdsHome4 from './Ads/AdsHome4';
 import { Visible, Hidden } from 'react-grid-system';
+import ReactGA from 'react-ga';
 
 
 
@@ -25,11 +26,20 @@ class Home extends Component {
             load: true,
             notFound: false
         };
+
+
+       
     }
 
     componentDidMount() {
         document.title = "Portal Aviline - O Portal Online da Avicultura!";
     }
+
+    initializeGA(){
+        ReactGA.initialize('UA-131777803-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
 
     async getData(that) {
 
@@ -46,7 +56,7 @@ class Home extends Component {
 
 
     render() {
-
+        this.initializeGA();
         this.state.load && this.getData(this);
 
         return (
