@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.2.1",
     "certbot": "^1.0.0",
     "emotion": "^10.0.5",
     "express": "^4.16.4",
     "material-icons-react": "^1.0.4",
     "moment": "^2.23.0",
+    "path": "^0.12.7",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-custom-share": "^0.4.8",
@@ -24,10 +29,11 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-sticky-box": "^0.7.7",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "sitemap": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
