@@ -98,7 +98,7 @@ function update() {
         getData();
         update();
         console.log("Atualizou!");
-    }, 600000);
+    }, 30000);
 
 }
 
@@ -116,4 +116,4 @@ app.get('/*', function (req, res) {
 });
 
 
-app.listen(process.env.PORT || 9000);
+app.listen(process.env.PORT || 3000);
