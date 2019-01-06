@@ -92,11 +92,11 @@ const getData = async () => {
 update();
 
 function update() {
+    getData();
     setTimeout(() => {
-        getData();
         update();
         console.log("Atualizou!");
-    }, 30000);
+    }, 60000);
 
 }
 
