@@ -2,10 +2,8 @@ var path = require('path');
 var express = require('express')
 var sm = require('sitemap');
 const fetch = require("node-fetch");
-const host = 'http://aviline.com.br';
+const host = 'https://aviline.com.br';
 const app = express();
-
-
 
 
 var sitemap = sm.createSitemap({

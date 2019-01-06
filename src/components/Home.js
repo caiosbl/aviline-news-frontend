@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid } from 'react-bootstrap';
-import {Col as ColR} from 'reactstrap';
+import { Col as ColR, Row as RowR } from 'reactstrap';
 import LatestNews from './LatestNews';
 import CardSpotlightNews from './CardSpotlightNews'
 import Spinner from './Spinner';
@@ -12,7 +12,8 @@ import AdsHome1 from './Ads/AdsHome1';
 import AdsHome2 from './Ads/AdsHome2';
 import AdsHome3 from './Ads/AdsHome3';
 import AdsHome4 from './Ads/AdsHome4';
-import { Visible, Hidden } from 'react-grid-system';
+import CardColumns from './CardColumns';
+import { Visible, Hidden, Container } from 'react-grid-system';
 import ReactGA from 'react-ga';
 
 
@@ -28,14 +29,14 @@ class Home extends Component {
         };
 
 
-       
+
     }
 
     componentDidMount() {
         document.title = "Portal Aviline - O Portal Online da Avicultura!";
     }
 
-    initializeGA(){
+    initializeGA() {
         ReactGA.initialize('UA-131777803-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
@@ -101,8 +102,9 @@ class Home extends Component {
                             <CardSecondaryNews position={10} data={this.state.data} />
                             <CardSecondaryNews position={11} data={this.state.data} /></div>}
                     </Col>
-                    <Col md={4} mdPull={2} style={{ marginBottom: 3 }}>
-                        <CardNextEvents />
+                    <Col md={4} mdPull={2} style={{ marginBottom: 1 }}>
+                        <CardColumns />
+
                     </Col>
 
 
@@ -113,59 +115,67 @@ class Home extends Component {
                     <Col md={8} mdPull={4} style={{ marginBottom: 40 }}>
 
                         <Hidden xs sm>
-                        <Grid>
-                            <Row>
+                            <Grid>
+                                <Row>
 
-                                <Col md={3} >
-                                    <AdsHome1 />
-                                </Col>
-                                <Col md={3}>
-                                    <AdsHome2 />
-                                </Col>
-                                <Col md={3}>
-                                    <AdsHome3 />
-                                </Col>
-                                <Col md={3}>
-                                    <AdsHome4 />
-                                </Col>
-                            </Row>
+                                    <Col md={3} >
+                                        <AdsHome1 />
+                                    </Col>
+                                    <Col md={3}>
+                                        <AdsHome2 />
+                                    </Col>
+                                    <Col md={3}>
+                                        <AdsHome3 />
+                                    </Col>
+                                    <Col md={3}>
+                                        <AdsHome4 />
+                                    </Col>
+                                </Row>
                             </Grid>
 
                         </Hidden>
 
                         <Visible xs sm>
-                        <Grid >
-                            <Row style={{marginLeft:2}}>
-                                <ColR sm={6} xs={6}>
-                                    <AdsHome1 />
-                                </ColR>
-                                <ColR sm={6} xs={6}>
-                                    <AdsHome2 />
-                                </ColR>
-                            </Row>
-                            <Row style={{marginLeft:2}}>
-                                <ColR sm={6} xs={6}>
-                                    <AdsHome3 />
-                                </ColR>
-                                <ColR sm={6} xs={6}>
-                                    <AdsHome4 />
-                                </ColR>
-                            </Row>
+                            <Grid >
+                                <Row style={{ marginLeft: 2 }}>
+                                    <ColR sm={6} xs={6}>
+                                        <AdsHome1 />
+                                    </ColR>
+                                    <ColR sm={6} xs={6}>
+                                        <AdsHome2 />
+                                    </ColR>
+                                </Row>
+                                <Row style={{ marginLeft: 2 }}>
+                                    <ColR sm={6} xs={6}>
+                                        <AdsHome3 />
+                                    </ColR>
+                                    <ColR sm={6} xs={6}>
+                                        <AdsHome4 />
+                                    </ColR>
+                                </Row>
                             </Grid>
                         </Visible>
 
 
                         <Row>
                             <Grid>
-                            {this.state.load || this.state.notFound ? <Spinner /> :
-                                <LatestNews data={this.state.data} />}
-                                </Grid>
+                                {this.state.load || this.state.notFound ? <Spinner /> :
+                                    <LatestNews data={this.state.data} />}
+                            </Grid>
                         </Row>
                     </Col>
 
-                    <Col md={4} mdPull={2} style={{ marginBottom: 10 }}>
+                    <ColR md={4} xs={12} sm={12} style={{ marginBottom: 10 }}>
+
+                        <Container>
+                            <RowR style={{ marginBottom: 40 }}> <CardNextEvents /></RowR>
+                        </Container>
+
                         <CardQuotation />
-                    </Col>
+
+
+
+                    </ColR>
 
                 </Row>
 

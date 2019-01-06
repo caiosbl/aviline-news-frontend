@@ -171,7 +171,6 @@ class CardQuotation extends Component {
         return (
 
 
-
             <Card>
                 <CardHeader style={{ backgroundColor: '#dc3545' }}>
                     <h4 style={{ fontFamily: 'Squada One, cursive', color: 'white' }}>
