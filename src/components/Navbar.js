@@ -41,7 +41,6 @@ class Bar extends Component {
           return response.json();
         })
         .then(function (res) {
-          res.length === 0 ? that.setState({ loadCategories: false }) :
             that.setState({ categories: res, loadCategories: false});
         });
     }
@@ -56,7 +55,6 @@ class Bar extends Component {
           return response.json();
         })
         .then(function (res) {
-          res.length === 0 ? that.setState({ loadColumn: false }) :
             that.setState({ columns: res, loadColumn: false});
         });
     }

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Card, CardBody, Badge, CardHeader, CardText,Container,Row,Col } from 'reactstrap';
+import {Row,Col } from 'reactstrap';
 import {Image} from 'react-bootstrap';
-import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
-import MaterialIcon from 'material-icons-react';
 import { Visible, Hidden} from 'react-grid-system';
 import { Link } from 'react-router-dom';
 

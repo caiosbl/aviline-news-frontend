@@ -47,8 +47,10 @@ class CardColumns extends Component {
     }
 
     renderItems() {
-        return (
-            this.state.columns.map((column) => <div style={{marginBottom: 10}}><ItemCardColumn key={column.slug} data={column} /></div>));
+
+        const columns = this.state.columns;
+        return (columns.length === 0 ? <h5 style={{ fontFamily: 'Squada One, cursive'}}>Ops, ainda não há Colunas</h5> :
+            columns.map((column) => <div style={{marginBottom: 10}}><ItemCardColumn key={column.slug} data={column} /></div>));
     }
 
 
