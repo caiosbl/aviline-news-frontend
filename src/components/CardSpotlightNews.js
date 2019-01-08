@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, Badge, CardText } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, Badge} from 'reactstrap';
 import Spinner from './Spinner';
 import { Link } from 'react-router-dom';
 import '../styles/CardSpotlightNews.css';
@@ -51,12 +51,12 @@ class CardSpotlightNews extends Component {
                         }
                         <CardImgOverlay>
                             {data.categories[0] !== undefined &&
-                                <CardText>
-                                    <Badge color="danger" id="badge"><h6>{data.categories[0].name}</h6></Badge>
-                                </CardText>}
-                            <CardText id='CardTitle'>
+                                    <Badge color="danger" id="badge">
+                                    <h6>{data.categories[0].name}</h6>
+                                    </Badge>}
+                            <div id='CardTitle' style={{marginTop: 5}}>
                                 <h4 style={{ fontSize: '400' }}>{data.title}</h4>
-                            </CardText>
+                            </div>
                         </CardImgOverlay>
                     </Card>
                 </Link>);

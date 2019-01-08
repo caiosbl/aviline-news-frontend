@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import { Card, CardBody, Badge, CardHeader, CardText, Container, Row, Col } from 'reactstrap';
-import { Image } from 'react-bootstrap';
+import { Card, CardBody, CardHeader, Container} from 'reactstrap';
 import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
 import MaterialIcon from 'material-icons-react';
-import { Visible, Hidden } from 'react-grid-system';
-import { Link } from 'react-router-dom';
 import ItemCardColumn from './ItemCardColumn';
 
 
-
-const HeaderQuotationStyle = {
-    width: 'auto',
-    color: '#dc3545',
-    borderBottom: '3px solid #dc3545',
-    marginTop: 3
-};
 
 
 class CardColumns extends Component {

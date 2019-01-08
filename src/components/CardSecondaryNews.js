@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {  CardText } from 'reactstrap';
 import Spinner from './Spinner';
 import { Link } from 'react-router-dom';
 
@@ -56,9 +55,9 @@ class CardSecondaryNews extends Component {
 
                     <Link to={"/news/" + data.slug} id="link">
                  
-                        <CardText>
+                        <div>
                         <h6>{data.title}</h6>
-                        </CardText>
+                        </div>
                    
                 </Link></div>);
     }

@@ -89,7 +89,7 @@ class CardNextEvents extends Component {
 
                             <tbody>
                                 {this.getNextEvents(events).map((event) => {
-                                    return <tr>
+                                    return <tr key={event.slug}>
                                         <th scope="row" >
                                             {
                                                 this.eventIsToday(event.dateStart, event.dateFinish)
@@ -111,9 +111,9 @@ class CardNextEvents extends Component {
 
                                             }
                                         </th>
-                                        <Link to={'events/' + event.slug}> <td
+                                       <td
                                             style={{ fontFamily: 'Roboto Condensed', width: 400 }}
-                                        >{event.title}</td></Link>
+                                        > <Link to={'events/' + event.slug}> {event.title}</Link></td>
                                     </tr>
                                 })}
 

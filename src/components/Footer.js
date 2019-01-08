@@ -57,7 +57,7 @@ class Footer extends Component {
                         </a>
 
                         <h6 style={{ marginBottom: 2, marginLeft: 'auto' }}>By {" "}
-                            <span><img src={"/cslogo.png"} width={'50px'} style={{opacity:1.0}} id="cslogo"></img></span></h6>
+                            <span><img src={"/cslogo.png"} alt={"CS"}width={'50px'} style={{opacity:1.0}} id="cslogo"></img></span></h6>
 
                     </Row>
                 </Container>

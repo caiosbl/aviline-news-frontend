@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   Collapse,
@@ -67,7 +66,7 @@ class Bar extends Component {
 
   renderCategories(that) {
     return that.state.loadCategories ? <Spinner /> :
-      that.state.categories.map((category) => <a href={`/categories/${category.name}`}><DropdownItem>{category.name}</DropdownItem></a>);
+      that.state.categories.map((category) => <a href={`/categories/${category.name}`} key={category.name}><DropdownItem>{category.name}</DropdownItem></a>);
   }
 
   renderColumns(that) {
@@ -90,11 +89,11 @@ class Bar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem >
-                <Link to="/" className="Navlink"><NavLink id='linkNav'>Home</NavLink></Link>
+               <NavLink href="/" id='linkNav'>Home</NavLink>
               </NavItem>
 
               <NavItem>
-                <Link to="/events" className="Navlink" ><NavLink id='linkNav'>Eventos</NavLink></Link>
+                <NavLink href="/events" id='linkNav'>Eventos</NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>

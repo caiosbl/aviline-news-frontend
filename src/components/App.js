@@ -12,16 +12,12 @@ import Columns from './Columns';
 import Column from './Column';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import HttpsRedirect from 'react-https-redirect';
-import ReactGA from 'react-ga';
+
 
 
 
 class App extends Component {
     
-    constructor(props) {
-        super(props);
-
-    }
 
   
     render() {
