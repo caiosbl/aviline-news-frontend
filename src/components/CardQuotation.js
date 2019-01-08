@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardBody, Badge, CardHeader, CardText } from 'reactstrap';
-import { Row, Grid, Col } from 'react-bootstrap';
+import { Card, CardBody,  CardHeader, CardText } from 'reactstrap';
+import { Row, Grid } from 'react-bootstrap';
 import Spinner from './Spinner';
 import '../styles/CardSpotlightNews.css';
 import MaterialIcon from 'material-icons-react';
@@ -14,6 +14,26 @@ const HeaderQuotationStyle = {
     marginTop: 3
 };
 
+const RowQuotationStyle = {
+    background: '#ffe6e6',
+    borderBottom: '1px solid #ff6666'
+};
+
+const RowContentStyle = {
+    padding: 5
+};
+
+const PriceStyle = {
+    fontFamily: 'Squada One',
+    marginLeft: '10%',
+    fontSize: 30
+
+};
+
+const TitleStyle = {
+    fontFamily: 'Teko, sans-serif',
+    fontSize: 20
+};
 
 class CardQuotation extends Component {
 
@@ -59,16 +79,16 @@ class CardQuotation extends Component {
             function request() {
                 fetch(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='${startDate}'&@dataFinalCotacao='${finalDate}'&$top=100&$skip=0&$format=json&$select=cotacaoCompra,cotacaoVenda`)
                     .then(function (response) {
-                        return response.json() ;
+                        return response.json();
                     })
                     .then(function (res) {
 
                         const index = res.value.length - 1;
 
-                            const dolarBuy = res.value[index].cotacaoCompra;
-                            const dolarSell = res.value[index].cotacaoVenda;
-                            that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
-                        }
+                        const dolarBuy = res.value[index].cotacaoCompra;
+                        const dolarSell = res.value[index].cotacaoVenda;
+                        that.setState({ dolarBuy: dolarBuy, dolarSell: dolarSell });
+                    }
                     );
 
             }
@@ -178,118 +198,43 @@ class CardQuotation extends Component {
                         Cotações</h4></CardHeader>
 
                 <CardBody>
-                    <Grid>
+                    <Grid style={{ fontFamily: 'Roboto Condensed' }}>
 
                         <Row style={HeaderQuotationStyle}>
-                            <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Dólar(PTAX)</b></span> 
-                            <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
+                            <CardText> <span><b>Dólar(PTAX)</b></span>
+                                <small style={{ marginLeft: 10 }}>Fonte: Banco Central</small> </CardText>
                         </Row>
 
                         {loadDolar ? <Spinner /> :
-                            <Row>
+                            <div><Row style={RowQuotationStyle}><h6 style={RowContentStyle}>
+                            <span style={TitleStyle}>Compra</span> <span style={PriceStyle}>R${this.state.dolarBuy.toFixed(4)}</span></h6></Row>
+                                <Row style={RowQuotationStyle}><h6 style={RowContentStyle}><span style={TitleStyle}>Venda</span> <span style={PriceStyle}>R${this.state.dolarSell.toFixed(4)}</span></h6></Row></div>}
 
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}>Compra</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarBuy.toFixed(4)}</h4>
-
-                                    </Badge>
-
-                                </Col>
-
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}>Venda</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.dolarSell.toFixed(4)}</h4>
-
-                                    </Badge>
-
-                                </Col>
-                            </Row>}
-
-                        <Row
-                            style={HeaderQuotationStyle}
-                        >
-                            <CardText style={{ fontFamily: 'Roboto Condensed' }}> <span><b>Frango (KG)</b></span> <small style={{ marginLeft: 10 }}>Fonte: CEPEA</small> </CardText>
-                        </Row>
-
-                        <Row>
-                            {loadFrozenChicken ? <Spinner /> :
-
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}>Congelado</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.frozenChicken}</h4>
-                                    </Badge>
-                                </Col>}
-
-                            {loadColdChicken ? <Spinner /> :
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}>Resfriado</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.coldChicken}</h4>
-                                    </Badge>
-                                </Col>}
+                        <Row style={HeaderQuotationStyle}>
+                            <CardText> <span><b>Frango (KG)</b></span> <small style={{ marginLeft: 10 }}>Fonte: CEPEA</small> </CardText>
                         </Row>
 
 
-                        <Row
-                            style={HeaderQuotationStyle}
-                        >
-                            <CardText style={{ fontFamily: 'Roboto Condensed' }}>
+                        {loadFrozenChicken ? <Spinner /> : <Row style={RowQuotationStyle}>
+                        <h6 style={RowContentStyle}><span style={TitleStyle}>Congelado</span> <span style={PriceStyle}>R${this.state.frozenChicken}</span></h6></Row>}
+                        {loadColdChicken ? <Spinner /> : <Row style={RowQuotationStyle}><h6 style={RowContentStyle}><span style={TitleStyle}>Resfriado</span> <span style={PriceStyle}>R${this.state.coldChicken}</span></h6></Row>}
+
+                        <Row style={HeaderQuotationStyle}>
+                            <CardText>
                                 <span><b>Milho</b></span>
                                 <small style={{ marginLeft: 10 }}>Fonte: CEPEA</small> </CardText>
                         </Row>
+                        {loadCorn ? <Spinner /> : <Row style={RowQuotationStyle}><h6 style={RowContentStyle}><span style={TitleStyle}>SC de 60KG</span> <span style={PriceStyle}>R${this.state.corn}</span></h6></Row>}
 
-                        <Row>
-                            {loadCorn ? <Spinner /> :
-
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}>SC de 60KG</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.corn}</h4>
-                                    </Badge>
-                                </Col>}
-
-
-                        </Row>
-
-                        <Row
-                            style={HeaderQuotationStyle}
-                        >
-                            <CardText style={{ fontFamily: 'Roboto Condensed' }}>
+                        <Row style={HeaderQuotationStyle}>
+                            <CardText>
                                 <span><b>Soja (SC de 60KG)</b></span>
                                 <small style={{ marginLeft: 10 }}>Fonte: CEPEA</small> </CardText>
                         </Row>
 
-                        <Row>
-                            {loadSoy ? <Spinner /> :
+                        {loadSoy ? <Spinner/> : <Row style={RowQuotationStyle}><h6 style={RowContentStyle}><span style={TitleStyle}>PR</span> <span style={PriceStyle}>R${this.state.soy}</span></h6> </Row>}
+                        {loadSoyPort ? <Spinner/> : <Row style={RowQuotationStyle}> <h6 style={RowContentStyle}><span style={TitleStyle}>Paranaguá</span> <span style={PriceStyle}>R${this.state.soyPort}</span></h6> </Row>}
 
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}> PR</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.soy}</h4>
-                                    </Badge>
-                                </Col>}
-
-                            {loadSoyPort ? <Spinner /> :
-
-                                <Col style={{ fontFamily: 'Roboto Condensed', marginLeft: 20 }}>
-
-                                    <Badge color='danger' style={{ marginTop: 5 }}>
-                                        <h6 style={{ padding: 5 }}> Paranaguá</h6>
-                                        <h4 style={{ margin: 10, textShadow: '5px 5px 18px black' }}>R$ {this.state.soyPort}</h4>
-                                    </Badge>
-                                </Col>}
-
-
-                        </Row>
                     </Grid>
                 </CardBody>
             </Card>
