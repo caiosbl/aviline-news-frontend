@@ -9,7 +9,7 @@ class AdsHome4 extends Component {
     return (
    
         <Row className="show-grid" style={{marginBottom:20, marginRight:1}}>
-            <Image src="/adsSide.png"  width={'90%'} height={'20%'}/>
+            <Image src="/adsSide4.png"  width={'90%'} height={'20%'}/>
         </Row>
 
     );
