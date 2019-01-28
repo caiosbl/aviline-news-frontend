@@ -45,13 +45,14 @@ class Column extends Component {
                 return response.json();
             })
             .then(function (res) {
-                res.length === 0 ? that.setState({ notFound: true, load: false }) :
+                if(res.length === 0) that.setState({ notFound: true, load: false }) 
+                else{
                     that.setState({ post: res[0], load: false });
 
                 const title = res[0].title !== undefined ? res[0].title : "";
                 const author = res[0].name !== undefined ? res[0].name : "";
                 if (title !== undefined) document.title = `Portal Aviline - ${title} - Coluna do ${author}`;
-            });
+            }});
 
     }
 
@@ -70,12 +71,12 @@ class Column extends Component {
 
             <Container style={{ marginBottom: 100 }}>
                 <Row>
-
+                {this.state.notFound ? <NotFound /> :
 
                     <Col xs={12} md={10}>
                     
                     {!this.state.load && this.getBreadcrumb(this)}
-                        {this.state.notFound ? <NotFound /> : <ColumnCard data={post} />}
+                        <ColumnCard data={post} />
 
 
                         {this.state.post !== undefined && <ShareBar url={window.location.href} title={`${post.title} - Portal Aviline`} />}
@@ -86,6 +87,8 @@ class Column extends Component {
                             <Comments href={window.location.href} numPosts={5} width={'auto'} />
                         </FacebookProvider>
                     </Col>
+
+                }
 
 
 
