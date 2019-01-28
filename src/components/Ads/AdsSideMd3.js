@@ -9,7 +9,7 @@ class AdsSideMd3 extends Component {
     return (
    
         <Row className="show-grid" style={{marginBottom:20}}>
-            <Image src="/adsSide.png"  width={'100%'} height={'20%'}/>
+            <Image src="/adsSide3.png"  width={'100%'} height={'20%'}/>
         </Row>
 
     );
