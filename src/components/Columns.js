@@ -188,7 +188,7 @@ class Columns extends Component {
             <Grid>
 
 
-                {this.state.notFound ? <NotFound /> :
+                {this.state.notFound ? <div style={{marginBottom: '10%'}}><NotFound /></div> :
                     this.state.load ? <Spinner /> : <div>
 
                         <Row>
