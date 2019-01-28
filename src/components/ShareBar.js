@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FaLinkedin, FaTwitter, FaEnvelope, FaGooglePlus, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { ShareButtonRectangle, ShareBlockStandard } from 'react-custom-share';
+var htmlToText = require('html-to-text');
 
 const ShareComponent = props => {
 
@@ -13,11 +14,12 @@ const ShareComponent = props => {
       { network: 'GooglePlus', icon: FaGooglePlus },
       { network: 'Email', icon: FaEnvelope },
       { network: 'Linkedin', icon: FaLinkedin },
-      {network: 'Pinterest', icon: FaWhatsapp, link: `https://api.whatsapp.com/send?text=${props.title} 
-      ${props.url}`},
+
     ],
     text: props.title,
-    longtext: `Take a look at this super website I have just found.`,
+    longtext: htmlToText.fromString(props.description, {
+      wordwrap: 130
+    }),
   };
 
   return <ShareBlockStandard {...shareBlockProps} />;

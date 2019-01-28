@@ -87,7 +87,9 @@ class Event extends Component {
                     <Row>
                         <Col xs={12} md={10}>
                             <EventCard data={event} />
-                            {<ShareBar url={window.location.href} title={`${event.title} - Portal Aviline`}/>}
+                            {<ShareBar url={window.location.href} title={`${event.title} - Portal Aviline`}
+                            description={event.description}
+                            />}
 
                             <h3 style={{
                                 fontFamily: 'Roboto Condensed, sans-serif',

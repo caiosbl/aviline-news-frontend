@@ -79,7 +79,9 @@ class Column extends Component {
                         <ColumnCard data={post} />
 
 
-                        {this.state.post !== undefined && <ShareBar url={window.location.href} title={`${post.title} - Portal Aviline`} />}
+                        {(this.state.post !== undefined  && this.state.post !== "") && <ShareBar url={window.location.href} title={`${post.title} - Portal Aviline`} 
+                        description={post.content.description}
+                        />}
 
                         <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545' }}>Comentários</h3>
 

@@ -74,7 +74,8 @@ class News extends Component {
                         {this.state.notFound ? <NotFound /> : <NewsCard data={news} />}
 
 
-                        {this.state.news !== undefined && <ShareBar url={window.location.href} title={`${news.title} - Portal Aviline`} />}
+                        {(this.state.news !== undefined && this.state.news !== "" )&& <ShareBar url={window.location.href} title={`${news.title} - Portal Aviline`}  
+                        description={news.content.brief}/>}
 
                         <h3 style={{ fontFamily: 'Roboto Condensed, sans-serif', color: "#dc3545", borderBottom: '3px solid #dc3545' }}>Comentários</h3>
 
