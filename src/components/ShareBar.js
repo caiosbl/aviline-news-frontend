@@ -14,7 +14,8 @@ const ShareComponent = props => {
       { network: 'GooglePlus', icon: FaGooglePlus },
       { network: 'Email', icon: FaEnvelope },
       { network: 'Linkedin', icon: FaLinkedin },
-
+      {network: 'Pinterest', icon: FaWhatsapp, link: `https://api.whatsapp.com/send?text=${props.title} 
+      ${props.url}`},
     ],
     text: props.title,
     longtext: htmlToText.fromString(props.description, {
