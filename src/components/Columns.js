@@ -43,9 +43,11 @@ class Columns extends Component {
                 return response.json();
             })
             .then(function (res) {
-                res.length === 0 ? that.setState({ notFound: true, loadAuthor: false }) :
+                if(res.length === 0)  that.setState({ notFound: true, loadAuthor: false }) 
+                else{
                     that.setState({ author: res[0], loadAuthor: false });
                     document.title = `Portal Aviline - Coluna do ${res[0].name}`
+                }
             });
     }
 
