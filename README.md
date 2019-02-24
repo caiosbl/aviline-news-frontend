@@ -1,4 +1,4 @@
-Frontend desenvolvido parao site [https://aviline.com.br/](https://aviline.com.br/)
+Frontend desenvolvido para o site [https://aviline.com.br/](https://aviline.com.br/)
 
 ## Available Scripts
 
