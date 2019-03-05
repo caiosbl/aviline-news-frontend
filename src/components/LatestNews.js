@@ -37,7 +37,8 @@ class LatestNews extends Component {
 
                 <CardBody>
                     {newsList.map((news) => {
-                        if (cont < 10)
+                        cont++; 
+                        if ( cont > 11 && cont < 25)
                             return (
                             <tr key={news.slug}>
                                 <th scope="row" style={{width:100}}>
