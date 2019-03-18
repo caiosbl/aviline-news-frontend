@@ -3,6 +3,7 @@ var express = require('express')
 var sm = require('sitemap');
 const fetch = require("node-fetch");
 const host = 'https://aviline.com.br';
+const hostBackend = 'https://aviline.herokuapp.com';
 const app = express();
 
 
@@ -39,7 +40,7 @@ const getData = async () => {
 
         sitemap.add({ url: '/categories', changefreq: 'daily', priority: 0.8 });
 
-        const responsePosts = await fetch("https://aviline.herokuapp.com/api/post");
+        const responsePosts = await fetch(`${hostBackend}/api/post`);
         const posts = await responsePosts.json();
 
         posts.forEach(news => {
@@ -51,7 +52,7 @@ const getData = async () => {
 
         });
 
-        const responseEvents = await fetch(`https://aviline.herokuapp.com/api/event`);
+        const responseEvents = await fetch(`${hostBackend}/api/event`);
         const events = await responseEvents.json();
         events.forEach(event => {
             const obj = { url: `/events/${event.slug}` };
@@ -61,7 +62,7 @@ const getData = async () => {
             }
         });
 
-        const responseAuthors = await fetch(`https://aviline.herokuapp.com/api/column-author`);
+        const responseAuthors = await fetch(`${hostBackend}/api/column-author`);
         const authors = await responseAuthors.json();
         authors.forEach(author => {
             const obj = { url: `/columns/${author.slug}` };
@@ -71,7 +72,7 @@ const getData = async () => {
             }
         });
 
-        const responseColumns = await fetch(`https://aviline.herokuapp.com/api/column`);
+        const responseColumns = await fetch(`${hostBackend}/api/column`);
         const columns = await responseColumns.json();
         columns.forEach(column => {
             const obj = { url: `/column/${column.slug}` };
