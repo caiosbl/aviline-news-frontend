@@ -29,7 +29,6 @@ class App extends Component {
                 <AdsModal />
                 <Bar />
                 <AdsTop />
-                <HttpsRedirect>
                     <Switch>
     
                         <Route exact path="/news/:id" component={News} />
@@ -43,7 +42,7 @@ class App extends Component {
                         <Route path="*" component={Home} />
     
                     </Switch>
-                    </HttpsRedirect>
+               
               
     
     
