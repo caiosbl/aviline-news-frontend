@@ -11,7 +11,7 @@ import AdsModal from './Ads/AdsModal';
 import Columns from './Columns';
 import Column from './Column';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import HttpsRedirect from 'react-https-redirect';
+
 
 
 
